@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const defaultBaseURL = 'http://localhost:3000';
-const envBaseURL = process.env.HOSTING_URL; 
+const envBaseURL = process.env.NEXT_PUBLIC_HOSTING_URL; 
 
 const baseURL = envBaseURL || defaultBaseURL; 
 
