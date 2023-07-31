@@ -1,28 +1,32 @@
-# Create T3 App
+https://user-images.githubusercontent.com/87823281/185812012-8a9070a2-fb4f-49fb-96db-d9beade7f0ab.mp4
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+# e-commerce refactor
 
-## What's next? How do I make an app with this?
+when i first started learning web development, e-commerces were the big thing to test your skills. due to that, i decided to build one myself.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+this current version is a refactor of one i finished mid-2022, which may be [here.](https://github.com/antoniopataro/my-sandbox/tree/main/old-projects/e-commerce)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+in the making, i also took the chance to learn some back-end using real databases, which was a real broken barrier for me.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### how to run
+honestly, it's not worth the trouble. but if you really want to, follow along:
 
-## Learn More
+1. you'll need a local postgresql database. so spawn a docker instance, it's easier
+2. clone the repository w/ `git clone git@github.com:antoniopataro/e-commerce-refactor.git`
+3. install its dependencies w/ `npm install` or other package manager you might wanna use
+4. create a `.env` file and set `DATABASE_URL` to your local postgresql connection url
+5. run `npx prisma migrate dev` to create the necessary tables in the database
+6. either run `npm run dev` for a development version or `npm run build && npm start` for a production preview version
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+you'll probably see no data. there's a primitive admin interface i've created to manage products somewhere around the routes. try accessing it.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+if something breaks, feel free to make a pr.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### stack and dependencies:
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- jsonwebtoken
+- next.js
+- postgresql
+- prisma
+- tailwindcss w/ postcss
+- typescript
