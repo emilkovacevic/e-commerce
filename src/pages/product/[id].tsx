@@ -4,9 +4,8 @@ import { CartContext } from "@contexts/CartProvider";
 
 import Header from "@components/Header";
 
-import axios from "axios";
-
 import { ProductProps } from "@components/Product";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   product: ProductProps;
@@ -55,8 +54,8 @@ function Product({ product, products }: Props) {
 export default Product;
 
 export async function getServerSideProps(context: any) {
-  const product = await axios.get(`http://localhost:3000/api/products/${context.params.id}`);
-  const products = await axios.get("http://localhost:3000/api/products");
+  const product = await axiosinstance.get(`/api/products/${context.params.id}`);
+  const products = await axiosinstance.get("/api/products");
 
   return {
     props: {

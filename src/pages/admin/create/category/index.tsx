@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useRouter } from "next/router";
 
-import axios from "axios";
+import axiosinstance from "src/axios/instance";
 
 function CreateCategory() {
   const router = useRouter();
@@ -23,7 +23,7 @@ function CreateCategory() {
 
     if (!category) return;
 
-    const response = await axios.post("http://localhost:3000/api/create/category", {
+    const response = await axiosinstance.post("/api/create/category", {
       name: category,
       slug: fromNameToSlug(category),
     });

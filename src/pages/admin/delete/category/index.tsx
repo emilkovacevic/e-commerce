@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { useRouter } from "next/router";
 
-import axios from "axios";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   categories: {
@@ -22,7 +22,7 @@ function DeleteCategory({ categories }: Props) {
 
     if (!categoryName) return;
 
-    const response = await axios.delete(`http://localhost:3000/api/delete/categories/${categoryName}`);
+    const response = await axiosinstance.delete(`/api/delete/categories/${categoryName}`);
 
     if (response.status === 200) {
       router.reload();
@@ -71,7 +71,7 @@ function DeleteCategory({ categories }: Props) {
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get("http://localhost:3000/api/categories");
+  const response = await axiosinstance.get("/api/categories");
 
   return {
     props: {

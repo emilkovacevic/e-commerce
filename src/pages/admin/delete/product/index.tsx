@@ -3,8 +3,7 @@ import React, { useRef } from "react";
 import { useRouter } from "next/router";
 
 import { ProductProps } from "@components/Product";
-
-import axios from "axios";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   products: ProductProps[];
@@ -23,7 +22,7 @@ function DeleteProduct({ products }: Props) {
 
     if (!product) return;
 
-    const response = await axios.delete(`http://localhost:3000/api/delete/products/${product.id}`);
+    const response = await axiosinstance.delete(`/api/delete/products/${product.id}`);
 
     if (response.status === 200) {
       router.reload();
@@ -72,7 +71,7 @@ function DeleteProduct({ products }: Props) {
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get("http://localhost:3000/api/products");
+  const response = await axiosinstance.get("/api/products");
 
   return {
     props: {

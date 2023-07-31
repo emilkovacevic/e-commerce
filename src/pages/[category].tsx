@@ -7,9 +7,8 @@ import Sidebar, { Category } from "@components/Sidebar";
 import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 
-import axios from "axios";
-
 import { ProductProps } from "@components/Product";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   categories: Category[];
@@ -44,7 +43,7 @@ function Home({ products, categories }: Props) {
 export async function getServerSideProps(context: NextPageContext) {
   const { page, category, tags } = context.query;
 
-  const products = await axios.get("http://localhost:3000/api/products", {
+  const products = await axiosinstance.get("/api/products", {
     params: {
       take: 10,
       skip: 10 * (Number(page) - 1),
@@ -52,7 +51,7 @@ export async function getServerSideProps(context: NextPageContext) {
       tags: JSON.stringify(tags),
     },
   });
-  const categories = await axios.get("http://localhost:3000/api/categories");
+  const categories = await axiosinstance.get("/api/categories");
 
   return {
     props: {

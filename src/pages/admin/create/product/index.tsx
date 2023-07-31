@@ -1,10 +1,8 @@
 import React, { useRef } from "react";
 
 import { useRouter } from "next/router";
-
-import axios from "axios";
-
 import { v4 as uuidv4 } from "uuid";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   categories: {
@@ -34,7 +32,7 @@ function CreateProduct({ categories }: Props) {
 
     if (!name || !price || !category || !imageUrl || !description || !tags || category === "Pick a category...") return;
 
-    const response = await axios.post("http://localhost:3000/api/create/product", {
+    const response = await axiosinstance.post("/api/create/product", {
       id: uuidv4(),
       name: name,
       description: description,
@@ -165,7 +163,7 @@ function CreateProduct({ categories }: Props) {
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get("http://localhost:3000/api/categories");
+  const response = await axiosinstance.get("/api/categories");
 
   return {
     props: {

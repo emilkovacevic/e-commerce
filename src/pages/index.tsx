@@ -8,8 +8,8 @@ import { ProductProps } from "@components/Product";
 
 import { NextPageContext } from "next";
 
-import axios from "axios";
 import Footer from "@components/Footer/Footer";
+import axiosinstance from "src/axios/instance";
 
 interface Props {
   products: ProductProps[];
@@ -38,14 +38,14 @@ function Home({ products, categories }: Props) {
 export async function getServerSideProps(context: NextPageContext) {
   const { page, tags } = context.query;
 
-  const products = await axios.get("http://localhost:3000/api/products", {
+  const products = await axiosinstance.get("/api/products", {
     params: {
       take: 10,
       skip: 10 * (Number(page) - 1),
       tags: JSON.stringify(tags),
     },
   });
-  const categories = await axios.get("http://localhost:3000/api/categories");
+  const categories = await axiosinstance.get("/api/categories");
 
   return {
     props: {
