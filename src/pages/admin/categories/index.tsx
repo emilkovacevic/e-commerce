@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { ProductProps } from "@components/Product";
 
-import axios from "axios";
+import axiosinstance from "src/axios/instance";
 
 interface CategoryProps {
   name: string;
@@ -19,7 +19,7 @@ function Categories() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const categories = await axios.get("http://localhost:3000/api/categories");
+      const categories = await axiosinstance.get("/api/categories");
       setCategories(categories.data);
     };
 

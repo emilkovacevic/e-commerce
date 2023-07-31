@@ -42,6 +42,7 @@ function Sidebar({ showSidebar, categories }: Props) {
         tags: tags,
       },
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags]);
 
   const sortedCategories = categories.sort((a, b) => {
