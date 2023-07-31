@@ -20,9 +20,9 @@ function Home({ products, categories }: Props) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div className="flex flex-col w-screen min-h-screen h-full font-medium text-sm text-text bg-slate-200 dark:bg-slate-800">
+    <div className="flex justify-between flex-col w-screen min-h-screen font-medium text-sm text-text bg-slate-200 dark:bg-slate-900">
       <div
-      className="bg-gray-400 dark:bg-gray-900"
+      className="sticky top-0 z-50 "
       >
         <Header setShowSidebar={setShowSidebar} products={products} />
       </div>

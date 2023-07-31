@@ -27,7 +27,7 @@ function Categories() {
   }, []);
 
   return (
-    <main className="flex flex-col w-full min-h-screen items-center gap-16 p-16">
+    <main className="flex flex-col w-full min-h-screen items-center gap-16 p-16 bg-slate-200 dark:bg-slate-900">
       <header className="flex flex-col w-1/3 gap-8">
         <span className="text-gray-500 text-sm text-center font-bold">E-Commerce</span>
         <div className="flex gap-2 text-2xl font-semibold text-gray-700">

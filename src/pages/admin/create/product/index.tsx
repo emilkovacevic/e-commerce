@@ -49,7 +49,7 @@ function CreateProduct({ categories }: Props) {
   };
 
   return (
-    <main className="flex flex-col w-screen min-h-screen items-center gap-8 p-16">
+    <main className="flex flex-col w-screen min-h-screen items-center gap-8 p-16 bg-slate-200 dark:bg-slate-900">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/3 gap-4 text-gray-700">
         <button onClick={() => router.push("/admin")} className="font-semibold text-2xl text-left">

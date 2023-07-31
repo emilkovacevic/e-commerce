@@ -1,5 +1,3 @@
-"use client";
-
 import { useColorThemeSwitcher } from "../../hooks/useColorTheme";
 
 const ColorThemeSwitcher = () => {

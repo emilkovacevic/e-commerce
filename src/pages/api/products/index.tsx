@@ -1,8 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from '../../../libs/prisma'
 
 const fromSlugToName = (slug: string) => {
   return slug

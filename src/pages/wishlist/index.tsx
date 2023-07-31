@@ -21,11 +21,11 @@ function Wishlist({ products }: Props) {
   };
 
   return (
-    <main className="flex flex-col w-screen h-full items-center font-medium text-sm text-text">
+    <main className="flex flex-col w-screen min-h-screen text-black dark:text-white items-center font-medium text-sm text-text bg-slate-200 dark:bg-slate-900">
       <Header products={products} />
       <main className="flex flex-col w-2/3 h-full gap-8 py-8">
         <header className="flex">
-          <h1 className="w-full text-left font-black text-2xl text-gray-700">Wishlist</h1>
+          <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Wishlist</h1>
         </header>
         <ul className="grid h-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-start gap-8 overflow-scroll">
           {wishlist.length > 0 ? (

@@ -1,9 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
-
+import prisma from '../../../../libs/prisma'
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 const authenticateUserByToken = async (req: NextApiRequest, res: NextApiResponse) => {

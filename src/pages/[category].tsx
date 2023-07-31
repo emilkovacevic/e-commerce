@@ -30,7 +30,7 @@ function Home({ products, categories }: Props) {
   }, [category, categories, router]);
 
   return (
-    <main className="flex flex-col w-screen min-h-screen h-full font-medium text-sm text-text">
+    <main className="flex flex-col w-screen min-h-screen font-medium text-sm text-text">
       <Header setShowSidebar={setShowSidebar} products={products} />
       <main className="flex w-full h-full">
         <Sidebar showSidebar={showSidebar} categories={categories} />

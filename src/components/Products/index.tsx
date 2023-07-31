@@ -137,7 +137,7 @@ function Products({ showSidebar, category, products }: Props) {
         {filteredProducts?.length > 0 ? (
           filteredProducts.map((product) => <Product key={product.id} showSidebar={showSidebar} product={product} />)
         ) : (
-          <span className="absolute w-full text-center text-gray-700">There are no items matching your filters.</span>
+          <span className="absolute w-full text-center dark:text-white text-gray-700">There are no items matching your filters.</span>
         )}
       </ul>
       <div className="flex items-center justify-center w-full gap-4 px-8 py-16">
@@ -151,7 +151,7 @@ function Products({ showSidebar, category, products }: Props) {
                 },
               })
             }
-            className="w-12 h-12 text-gray-700 rounded-xl"
+            className="w-12 h-12 text-gray-700 dark:text-white rounded-xl"
           >
             {page - 1}
           </button>
@@ -179,7 +179,7 @@ function Products({ showSidebar, category, products }: Props) {
                 },
               })
             }
-            className="w-12 h-12 text-gray-700 rounded-xl"
+            className="w-12 h-12 text-gray-700 dark:text-white rounded-xl"
           >
             {page + 1}
           </button>

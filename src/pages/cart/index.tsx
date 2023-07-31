@@ -92,12 +92,12 @@ function Cart({ products }: Props) {
   const formattedTotal = handlePrice(total);
 
   return (
-    <main className="flex flex-col w-screen h-screen items-center font-medium text-sm text-text">
+    <div className="flex flex-col w-screen h-screen items-center font-medium text-sm text-black dark:text-white  bg-slate-200 dark:bg-slate-800">
       <Header products={products} />
       <main className="flex w-full h-full justify-center">
         <section className="flex flex-col w-1/3 h-fit gap-8 py-8 pr-8">
           <header className="flex w-2/3">
-            <h1 className="w-full text-left font-black text-2xl text-gray-700">Information</h1>
+            <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Information</h1>
           </header>
           <form
             id="information"
@@ -117,7 +117,7 @@ function Cart({ products }: Props) {
                   id="first-name"
                   className={`w-full px-4 py-2 ring-1 ${
                     firstNameError ? "ring-red-500" : "ring-gray-300"
-                  } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
+                  } dark:bg-slate-600 bg-white outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
                 />
               </div>
               <div className="flex flex-col w-full">
@@ -131,7 +131,7 @@ function Cart({ products }: Props) {
                   id="last-name"
                   className={`w-full px-4 py-2 ring-1 ${
                     lastNameError ? "ring-red-500" : "ring-gray-300"
-                  } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
+                  } dark:bg-slate-600 bg-white outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
                 />
               </div>
             </div>
@@ -147,7 +147,7 @@ function Cart({ products }: Props) {
                   id="country"
                   className={`w-full px-4 py-2 ring-1 ${
                     countryError ? "ring-red-500" : "ring-gray-300"
-                  } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
+                  } dark:bg-slate-600 bg-white outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
                 />
               </div>
               <div className="flex flex-col w-full">
@@ -161,21 +161,21 @@ function Cart({ products }: Props) {
                   id="address"
                   className={`w-full px-4 py-2 ring-1 ${
                     addressError ? "ring-red-500" : "ring-gray-300"
-                  } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
+                  } dark:bg-slate-600 bg-white outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
                 />
               </div>
             </div>
           </form>
         </section>
-        <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8 border-l-[1px] border-gray-300">
+        <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8">
           <header className="flex w-2/3">
-            <h1 className="w-full text-left font-black text-2xl text-gray-700">Your Cart</h1>
+            <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Your Cart</h1>
           </header>
           <ul className="flex flex-col gap-4">
             {cart.map((product, index) => (
               <li
                 key={index}
-                className="flex items-center justify-between p-3 pb-6 border-gray-300 border-b-[1px] overflow-hidden"
+                className="flex items-center justify-between p-3 pb-6 overflow-hidden"
               >
                 <div className="flex w-full items-center gap-2">
                   <span className="flex w-12 h-12 items-center justify-center p-1 rounded bg-gray-300">
@@ -238,7 +238,7 @@ function Cart({ products }: Props) {
           </div>
         </aside>
       </main>
-    </main>
+    </div>
   );
 }
 

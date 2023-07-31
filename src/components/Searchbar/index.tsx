@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-
 import { ProductProps } from "@components/Product";
 
 interface Props {
@@ -10,7 +8,7 @@ interface Props {
 
 function Searchbar({ products }: Props) {
   const router = useRouter();
-
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [search, setSearch] = useState("");
 
   const isSearching = search.length > 0;
@@ -22,12 +20,28 @@ function Searchbar({ products }: Props) {
     return;
   });
 
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="relative hidden sm:block">
       <div className="group flex items-center gap-4 px-6 py-4 rounded-2xl bg-gray-100 dark:bg-slate-600 ">
         <span>
           <svg
-            className="fill-gray-500 transition-colors group-focus-within:fill-violet-700"
+            className="fill-gray-500 dark:fill-gray-100 transition-colors group-focus-within:fill-violet-500"
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -37,9 +51,10 @@ function Searchbar({ products }: Props) {
           </svg>
         </span>
         <input
+          ref={searchInputRef}
           type="text"
-          placeholder="Search among our products..."
-          className="w-fit outline-none border-none bg-transparent placeholder:text-gray-300 font-normal"
+          placeholder="Search (ctrl + k)."
+          className="w-fit outline-none border-none bg-transparent placeholder:text-gray-500 font-normal dark:placeholder:text-gray-200 text-gray-500 dark:text-white"
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>

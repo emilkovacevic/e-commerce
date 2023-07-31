@@ -1,11 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
-
 import { ProductProps } from "@components/Product";
-
 import { useRouter } from "next/router";
-
 import { AxiosResponse } from "axios";
-
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 import axiosinstance from "src/axios/instance";
 
@@ -79,8 +75,7 @@ function UserProvider({ children }: Props) {
       });
       router.push("/");
     }
-
-    return response;
+    return response
   };
 
   const logOut = () => {

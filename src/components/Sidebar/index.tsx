@@ -55,11 +55,14 @@ function Sidebar({ showSidebar, categories }: Props) {
   return (
     <aside
       className={`${
-        showSidebar ? "" : "hidden"
-      } lg:flex flex-col w-full md:w-1/3 border-r-[1px] dark:border-gray-300 border-gray-700  overflow-hidden`}
+        showSidebar ? "absolute left-0 z-50 dark:bg-black bg-slate-200" : "hidden"
+      } lg:flex flex-col w-full md:w-1/3 overflow-hidden`}
     >
       <nav className="flex flex-col gap-4 mx-8 py-8 sm:mx-16 sm:py-16 border-b-[1px] border-gray-300 overflow-hidden">
         <span className="text-base font-semibold dark:text-white">Category</span>
+        <Link
+        className="w-fit ml-4 px-6 py-2 dark:text-white hover:bg-slate-500/50  border border-black dark:border-white"
+        href="/" >clear</Link>
         {sortedCategories.map((category) => (
           <Link
             href={`/${category.slug}`}
@@ -72,7 +75,7 @@ function Sidebar({ showSidebar, categories }: Props) {
           </Link>
         ))}
       </nav>
-      <menu className="flex flex-col gap-4 mx-8 py-8 sm:mx-12 sm:py-12 md:mx-16 md:py-16 border-b-[1px] border-gray-300 overflow-hidden">
+      <menu className="flex flex-col gap-4 mx-8 py-8 sm:mx-12 sm:py-12 md:mx-16 md:py-16overflow-hidden">
         <span className="text-base font-semibold dark:text-white">Tags</span>
         <Checkbox label="Blue" tags={tags} setTags={setTags} />
         <Checkbox label="Green" tags={tags} setTags={setTags} />

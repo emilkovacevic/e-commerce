@@ -108,7 +108,9 @@ function Signup() {
             autoComplete="name"
             type="text"
             id="name"
-            className={`w-full px-4 py-2 ring-1 ${
+            className={`w-full px-4 py-2 ring-1
+            dark:bg-slate-600 bg-white
+             ${
               nameError ? "ring-red-500" : "ring-gray-300"
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
@@ -122,7 +124,9 @@ function Signup() {
             autoComplete="email"
             type="text"
             id="email"
-            className={`w-full px-4 py-2 ring-1 ${
+            className={`w-full px-4 py-2 ring-1
+            dark:bg-slate-600 bg-white
+             ${
               emailError ? "ring-red-500" : "ring-gray-300"
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
@@ -136,7 +140,9 @@ function Signup() {
             autoComplete="off"
             type="password"
             id="password"
-            className={`w-full px-4 py-2 ring-1 ${
+            className={`w-full px-4 py-2 ring-1 
+            dark:bg-slate-600 bg-white
+            ${
               passwordError ? "ring-red-500" : "ring-gray-300"
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
@@ -150,7 +156,9 @@ function Signup() {
             autoComplete="off"
             type="text"
             id="image"
-            className={`w-full px-4 py-2 ring-1 ${
+            className={`w-full px-4 py-2 ring-1 
+            dark:bg-slate-600 bg-white ${
+              
               imageError ? "ring-red-500" : "ring-gray-300"
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />

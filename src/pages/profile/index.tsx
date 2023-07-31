@@ -47,7 +47,7 @@ function Profile({ products }: Props) {
             <img src={user?.imageUrl} alt={user?.name} width={150} className="rounded-full" />
           </header>
         </section>
-        <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8 border-l-[1px] border-gray-300">
+        <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8">
           <header className="flex w-2/3">
             <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-gray-300">Your Purchases</h1>
           </header>

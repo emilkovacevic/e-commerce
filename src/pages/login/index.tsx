@@ -1,7 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-
 import { UserContext } from "@contexts/UserProvider";
-
 import { useRouter } from "next/router";
 
 function Login() {
@@ -39,8 +37,12 @@ function Login() {
 
     const response = validateInputs(email, password);
 
-    response === "ERROR: Invalid email" ? setEmailError(true) : setEmailError(false);
-    response === "ERROR: Password must be at least 8 characters" ? setPasswordError(true) : setPasswordError(false);
+    response === "ERROR: Invalid email"
+      ? setEmailError(true)
+      : setEmailError(false);
+    response === "ERROR: Password must be at least 8 characters"
+      ? setPasswordError(true)
+      : setPasswordError(false);
 
     if (typeof response === "string") return;
 
@@ -51,14 +53,24 @@ function Login() {
     <main className="flex flex-col w-screen h-screen items-center justify-center gap-8 py-16">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/6 gap-4 text-gray-700">
-        <button onClick={() => router.push("/")} className="font-semibold text-2xl text-left">
+        <button
+          onClick={() => router.push("/")}
+          className="font-semibold text-2xl text-left"
+        >
           &lt;-
         </button>
         <h1 className="font-semibold text-2xl text-left">Login</h1>
       </header>
-      <form className="flex flex-col w-1/6 gap-4 text-sm font-medium" noValidate onSubmit={handleLogIn}>
+      <form
+        className="flex flex-col w-1/6 gap-4 text-sm font-medium"
+        noValidate
+        onSubmit={handleLogIn}
+      >
         <div className="flex flex-col w-full">
-          <label htmlFor="email" className={`pb-2 ${emailError ? "text-red-500" : ""}`}>
+          <label
+            htmlFor="email"
+            className={`pb-2 ${emailError ? "text-red-500" : ""}`}
+          >
             Email
           </label>
           <input
@@ -66,13 +78,18 @@ function Login() {
             autoComplete="email"
             type="text"
             id="email"
-            className={`w-full px-4 py-2 ring-1 ${
-              emailError ? "ring-red-500" : "ring-gray-300"
-            } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
+            className={`w-full px-4 py-2 ring-1
+            dark:bg-slate-600 bg-white
+             ${
+               emailError ? "ring-red-500" : "ring-gray-300"
+             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
         <div className="flex flex-col w-full">
-          <label htmlFor="password" className={`pb-2 ${passwordError ? "text-red-500" : ""}`}>
+          <label
+            htmlFor="password"
+            className={`pb-2 ${passwordError ? "text-red-500" : ""}`}
+          >
             Password
           </label>
           <input
@@ -80,7 +97,9 @@ function Login() {
             autoComplete="off"
             type="password"
             id="password"
-            className={`w-full px-4 py-2 ring-1 ${
+            className={`w-full px-4 py-2 ring-1
+            dark:bg-slate-600 bg-white
+            ${
               passwordError ? "ring-red-500" : "ring-gray-300"
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
