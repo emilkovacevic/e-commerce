@@ -16,7 +16,7 @@ function Header({ setShowSidebar, products }: Props) {
   const { user, isAuthenticated } = useContext(UserContext);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-8 text-sm font-medium bg-gray-300 shadow-md h-fit md:p-0 text-text dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-4 py-4 text-sm font-medium bg-gray-300 shadow-md md:px-8 h-fit md:p-0 text-text dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}
@@ -38,7 +38,7 @@ function Header({ setShowSidebar, products }: Props) {
         Emil&apos;s-Commerce
       </button>
       <Searchbar products={products} />
-      <nav className="flex items-center gap-4 px-0 my-4 md:px-8">
+      <nav className="items-center hidden gap-4 px-0 my-4 md:flex md:px-8">
         <button
           onClick={() => router.push("/wishlist")}
           className="flex gap-2 p-4 group rounded-2xl bg-violet-100"

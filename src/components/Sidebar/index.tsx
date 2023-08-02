@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Checkbox from "@components/Checkbox";
 
@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 
 import { ProductProps } from "@components/Product";
 import Link from "next/link";
+import ColorThemeSwitcher from "@components/Header/ColorThemeSwitcher";
+import { UserContext } from "@contexts/UserProvider";
 
 export interface Category {
   name: string;
@@ -23,7 +25,7 @@ function Sidebar({ showSidebar, categories }: Props) {
   const [scrollYPos, setScrollYPos] = useState(0)
 
   const currentCategory = router.query.category;
-
+  const { user, isAuthenticated } = useContext(UserContext);
   const [tags, setTags] = useState<string[]>((router.query.tags as string[]) || []);
 
   useEffect(() => {
@@ -60,9 +62,9 @@ function Sidebar({ showSidebar, categories }: Props) {
   
   useEffect(() => {
     if (showSidebar) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflowX = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowX = "auto";
     }
   }, [showSidebar]);
 
@@ -81,8 +83,37 @@ function Sidebar({ showSidebar, categories }: Props) {
       className={`
       ${
         showSidebar ? `translate-x-0` : "absolute -translate-x-full"
-      } dark:bg-gray-800 bg-gray-100 md:relative min-h-screen  md:translate-x-0 flex flex-row md:flex-col w-full md:w-1/3 lg:w-1/5 transition-all duration-300`}
+      } dark:bg-gray-800 bg-gray-100 overflow-y-scroll md:relative min-h-screen min-w-[300px] md:translate-x-0 flex flex-col w-full md:w-1/3 lg:w-1/5 transition-all duration-300`}
     >
+      <nav
+      className="flex flex-col gap-4 mx-8 py-4 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
+      <span className="text-base font-semibold dark:text-white">USER</span>
+        <ul
+          className="mx-2 dark:text-white"
+        >
+          {isAuthenticated ? 
+          <>
+                    <li
+          className="p-2 my-2 uppercase text-md">
+          <Link href='/user'>Profile</Link></li>
+          </>  
+          :
+          <li
+          className="p-2 my-2 uppercase text-md"
+          ><Link href='/login'>Login</Link></li>
+          }
+          <li
+          className="p-2 my-2 uppercase text-md"
+          ><Link href='/wishlist'>Wishlist</Link></li>
+          <li
+          className="p-2 my-2 uppercase text-md"
+          ><Link href='/cart'>Cart</Link></li>
+
+          <li
+          className="p-2 my-2 capitalize text-md"
+          ><ColorThemeSwitcher /></li>
+        </ul>
+      </nav>
       <nav className="flex flex-col gap-4 mx-8 py-8 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
         <span className="text-base font-semibold dark:text-white">CATEGORY</span>
         <Link

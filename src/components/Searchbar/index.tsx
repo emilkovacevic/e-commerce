@@ -38,7 +38,7 @@ function Searchbar({ products }: Props) {
   }, []);
 
   return (
-    <div className="relative mx-4">
+    <div className="relative mx-1 md:mx-4">
       <div className="flex items-center gap-4 px-6 py-4 bg-gray-100 group rounded-2xl dark:bg-slate-600 ">
         <span>
           <svg
