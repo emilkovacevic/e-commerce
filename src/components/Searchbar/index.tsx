@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { ProductProps } from "@components/Product";
+import Image from "next/image";
 
 interface Props {
   products: ProductProps[];
@@ -37,7 +38,7 @@ function Searchbar({ products }: Props) {
   }, []);
 
   return (
-    <div className="relative hidden sm:block">
+    <div className="relative mx-4">
       <div className="flex items-center gap-4 px-6 py-4 bg-gray-100 group rounded-2xl dark:bg-slate-600 ">
         <span>
           <svg
@@ -58,17 +59,22 @@ function Searchbar({ products }: Props) {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="absolute flex flex-col w-full mt-2 overflow-hidden align-top transition-colors bg-gray-100 shadow-md max-h-48 h-fit rounded-xl">
+      <div className="absolute flex flex-col w-full mt-2 align-top transition-colors bg-gray-100 shadow-md h-fit rounded-xl">
         {isSearching && filteredProducts.length > 0 && (
-          <ul className="flex flex-col w-full gap-2 p-2">
+          <ul className="w-full gap-2 px-2 py-6 dark:text-black">
             {filteredProducts.map((product) => (
               <li
-                onClick={() => router.push(`/product/${product.id}`)}
                 key={product.id}
-                className="flex w-full gap-2 p-4 transition-colors cursor-pointer itemscenter rounded-xl hover:bg-gray-300"
               >
-                <img src={product.imageUrl} alt={product.name} width={20} height={20} />
+                <button
+                className="flex items-center w-full gap-2 p-4 transition-colors cursor-pointer rounded-xl hover:bg-gray-300"
+                 onClick={() => router.push(`/product/${product.id}`)}
+                >
+                <Image
+              
+                src={product.imageUrl} alt={product.name} width={40} height={40} />
                 <h4>{product.name}</h4>
+                </button>
               </li>
             ))}
           </ul>

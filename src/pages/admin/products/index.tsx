@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import { ProductProps } from "@components/Product";
 import axiosinstance from "src/axios/instance";
+import Image from "next/image";
 
 function Products() {
   const router = useRouter();
@@ -64,7 +65,10 @@ function Products() {
                 <div className="flex w-full">
                   <div className="flex items-center w-full gap-2">
                     <span className="flex items-center justify-center w-12 h-12 p-1 bg-gray-300 rounded">
-                      <img src={product.imageUrl} alt="" />
+                      <Image 
+                      width={250}
+                      height={250}
+                      src={product.imageUrl} alt={product.name} />
                     </span>
                     <span>{product.name}</span>
                     <span className="px-2 py-1 text-xs text-gray-500 bg-gray-300 rounded">{product.categoryName}</span>

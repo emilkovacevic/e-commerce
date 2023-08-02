@@ -1,10 +1,8 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-
 import { UserContext } from "@contexts/UserProvider";
-
 import { useRouter } from "next/router";
-
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 function Signup() {
   const router = useRouter();
@@ -37,28 +35,34 @@ function Signup() {
     imageUrl?: string,
   ) => {
     if (!name || name.length > 64) {
+      toast.error(' Invalid name, must be between 1 and 64 characters')
       return "ERROR: Invalid name";
     }
 
     if (!email || !email.includes("@") || email.length > 128) {
+      toast.error(' Invalid email address')
       return "ERROR: Invalid email";
     }
 
     if (!password || password.length < 8 || password.length > 24) {
+      toast.error('Password must be between 8 and 24 characters')
       return "ERROR: Password must be between 8 and 24 characters";
     }
 
     if (!imageUrl) {
+      toast.error('Provide a image URL')
       return "ERROR: Invalid image URL";
     }
 
     try {
       new URL(imageUrl);
     } catch (e) {
+      toast.error('Invalid image URL')
       return "ERROR: Invalid image URL";
     }
 
     if (!termsAcceptance) {
+      toast.error('You must accept the terms and conditions')
       return "ERROR: You must accept the terms and conditions";
     }
 
@@ -90,15 +94,15 @@ function Signup() {
   };
 
   return (
-    <main className="flex flex-col w-screen h-screen items-center justify-center gap-8 py-16">
-      <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
-      <header className="flex w-1/6 gap-4 text-gray-700">
-        <button onClick={() => router.push("/")} className="font-semibold text-2xl text-left">
+    <main className="flex flex-col items-center justify-center w-screen h-screen gap-8 py-16">
+      <span className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</span>
+      <header className="flex w-1/6 gap-4 text-gray-700 dark:text-gray-300">
+        <button onClick={() => router.push("/")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>
-        <h1 className="font-semibold text-2xl text-left">Signup</h1>
+        <h1 className="text-2xl font-semibold text-left">Signup</h1>
       </header>
-      <form className="flex flex-col w-full items-center gap-4 text-sm font-medium" noValidate onSubmit={handleSignUp}>
+      <form className="flex flex-col items-center w-full gap-4 text-sm font-medium dark:text-white" noValidate onSubmit={handleSignUp}>
         <div className="flex flex-col w-1/6">
           <label htmlFor="name" className={`pb-2 ${nameError ? "text-red-500" : ""}`}>
             Name
@@ -165,7 +169,7 @@ function Signup() {
         </div>
         <div className="flex flex-col w-1/3 py-8">
           <label
-            className="flex w-full items-center justify-center gap-2 transition-all"
+            className="flex items-center justify-center w-full gap-2 transition-all"
             onChange={() => setTermsAcceptance(!termsAcceptance)}
           >
             <input name="name" type="checkbox" className="hidden" value="checked" />
@@ -177,19 +181,19 @@ function Signup() {
               } transition-colors hover:bg-fgVar after:absolute after:content-[''] after:w-[4px] after:h-[6px] after:border-b-2 after:border-r-2 after:border-extreme after:rotate-[40deg] after:transition-opacity after:bg-transparent`}
             />
             <span className={`font-medium text-text text-sm ${termsError ? "text-red-500" : ""}`}>
-              I acknowledge that this is not a real e-commerce.
+              I acknowledge that this is not a real e-commerce website.
             </span>
           </label>
         </div>
-        <div className="flex w-1/6 justify-end gap-4 pt-4">
+        <div className="flex justify-end w-1/6 gap-4 pt-4">
           <button
             type="button"
             onClick={() => router.push("/login")}
-            className="text-gray-700 transition-colors hover:text-violet-700"
+            className="text-gray-700 transition-colors dark:text-white hover:text-violet-700"
           >
             Login
           </button>
-          <button className="px-4 py-2 rounded bg-violet-700 text-white">Signup</button>
+          <button className="px-4 py-2 text-white rounded bg-violet-700">Signup</button>
         </div>
       </form>
     </main>

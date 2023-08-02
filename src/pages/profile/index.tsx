@@ -25,7 +25,7 @@ function Profile({ products }: Props) {
   }, [router, user]);
 
   return (
-    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium text-text bg-white dark:bg-slate-800">
+    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium bg-white text-text dark:bg-slate-800">
       <Header products={products} />
       <main className="flex justify-center w-full h-full">
         <section className="flex flex-col w-1/3 gap-8 py-8 pr-8 h-fit">
@@ -44,12 +44,12 @@ function Profile({ products }: Props) {
                 Log Out
               </button>
             </div>
-            <img src={user?.imageUrl} alt={user?.name} width={150} className="rounded-full" />
+            <img src={user?.imageUrl} alt={user?.name} width={150} height={150} className="rounded-full" />
           </header>
         </section>
         <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8">
           <header className="flex w-2/3">
-            <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-gray-300">Your Purchases</h1>
+            <h2 className="w-full text-2xl font-black text-left text-gray-700 dark:text-gray-300">Your Purchases</h2>
           </header>
           <ul>
             {user?.purchases && user.purchases.length > 1 ? (

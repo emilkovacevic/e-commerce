@@ -8,6 +8,8 @@ import { UserContext } from "@contexts/UserProvider";
 import { useRouter } from "next/router";
 import { ProductProps } from "@components/Product";
 import axiosinstance from "src/axios/instance";
+import Image from "next/image";
+import { toast } from "react-toastify";
 
 interface Props {
   products: ProductProps[];
@@ -17,7 +19,8 @@ function Cart({ products }: Props) {
   const router = useRouter();
 
   const { isAuthenticated } = useContext(UserContext);
-  const { cart, addToCart, removeFromCart, removeMultipleProductsFromCart } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, removeMultipleProductsFromCart } =
+    useContext(CartContext);
 
   const handlePrice = (price: number) => {
     return price.toFixed(2);
@@ -39,25 +42,30 @@ function Cart({ products }: Props) {
     lastName?: string,
     country?: string,
     address?: string,
-    products?: CartProps[],
+    products?: CartProps[]
   ) => {
     if (products?.length === 0) {
+      toast.error('cart is empty, pleas add items in the cart.')
       return "ERROR: There are no products in cart";
     }
 
     if (!firstName || firstName.split(" ").length > 1) {
+      toast.error('You must enter a first name.')
       return "ERROR: You must enter a single first name";
     }
 
     if (!lastName || lastName.split(" ").length > 1) {
+      toast.error('You must enter a last name.')
       return "ERROR: You must enter a single last name";
     }
 
     if (!country) {
+      toast.error('You must enter a country.')
       return "ERROR: You must enter a country";
     }
 
     if (!address) {
+      toast.error('You must enter an address.')
       return "ERROR: You must enter a address";
     }
 
@@ -75,29 +83,50 @@ function Cart({ products }: Props) {
     const address = addressRef.current?.value;
     const products = cart;
 
-    const response = validateInputs(firstName, lastName, country, address, products);
+    const response = validateInputs(
+      firstName,
+      lastName,
+      country,
+      address,
+      products
+    );
 
-    response === "ERROR: There are no products in cart" ? setCartError(true) : setCartError(false);
-    response === "ERROR: You must enter a single first name" ? setFirstNameError(true) : setFirstNameError(false);
-    response === "ERROR: You must enter a single last name" ? setLastNameError(true) : setLastNameError(false);
-    response === "ERROR: You must enter a country" ? setCountryError(true) : setCountryError(false);
-    response === "ERROR: You must enter a address" ? setAddressError(true) : setAddressError(false);
+    response === "ERROR: There are no products in cart"
+      ? setCartError(true)
+      : setCartError(false);
+    response === "ERROR: You must enter a single first name"
+      ? setFirstNameError(true)
+      : setFirstNameError(false);
+    response === "ERROR: You must enter a single last name"
+      ? setLastNameError(true)
+      : setLastNameError(false);
+    response === "ERROR: You must enter a country"
+      ? setCountryError(true)
+      : setCountryError(false);
+    response === "ERROR: You must enter a address"
+      ? setAddressError(true)
+      : setAddressError(false);
 
     if (typeof response === "string") return;
 
     console.log(response);
+    alert("Purchase not available | Demo website");
   };
 
   const total = cart.reduce((acc, curr) => acc + curr.total, 0);
   const formattedTotal = handlePrice(total);
 
   return (
-    <div className="flex flex-col items-center w-screen h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-800">
+    <div className="min-h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-800">
       <Header products={products} />
-      <main className="flex justify-center w-full h-full mt-16">
-        <section className="flex flex-col w-1/3 gap-8 py-8 pr-8 h-fit">
-          <header className="flex w-2/3">
-            <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">Information</h1>
+      <main
+      className="py-16 mx-4"
+      >
+        <section className="py-8 mx-auto md:w-2/3 ">
+          <header className="flex ">
+            <h1 className="w-full mb-2 text-2xl font-black text-left text-gray-700 dark:text-white">
+              Information
+            </h1>
           </header>
           <form
             id="information"
@@ -107,7 +136,10 @@ function Cart({ products }: Props) {
           >
             <div className="flex gap-4">
               <div className="flex flex-col w-full">
-                <label htmlFor="first-name" className={`pb-2 ${firstNameError ? "text-red-500" : ""}`}>
+                <label
+                  htmlFor="first-name"
+                  className={`pb-2 ${firstNameError ? "text-red-500" : ""}`}
+                >
                   First Name
                 </label>
                 <input
@@ -121,7 +153,10 @@ function Cart({ products }: Props) {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label htmlFor="last-name" className={`pb-2 ${lastNameError ? "text-red-500" : ""}`}>
+                <label
+                  htmlFor="last-name"
+                  className={`pb-2 ${lastNameError ? "text-red-500" : ""}`}
+                >
                   Last Name
                 </label>
                 <input
@@ -137,7 +172,10 @@ function Cart({ products }: Props) {
             </div>
             <div className="flex gap-4">
               <div className="flex flex-col w-1/2">
-                <label htmlFor="country" className={`pb-2 ${countryError ? "text-red-500" : ""}`}>
+                <label
+                  htmlFor="country"
+                  className={`pb-2 ${countryError ? "text-red-500" : ""}`}
+                >
                   Country
                 </label>
                 <input
@@ -151,7 +189,10 @@ function Cart({ products }: Props) {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label htmlFor="address" className={`pb-2 ${addressError ? "text-red-500" : ""}`}>
+                <label
+                  htmlFor="address"
+                  className={`pb-2 ${addressError ? "text-red-500" : ""}`}
+                >
                   Address
                 </label>
                 <input
@@ -167,65 +208,81 @@ function Cart({ products }: Props) {
             </div>
           </form>
         </section>
-        <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8">
-          <header className="flex w-2/3">
-            <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">Your Cart</h1>
+        <aside className="mx-auto md:w-2/3">
+          <header>
+            <h2 className="mb-2 text-2xl font-black text-gray-700 dark:text-white">
+              Your Cart
+            </h2>
           </header>
-          <ul className="flex flex-col gap-4 border shadow-md">
+          <div className="flex flex-col gap-8 ">
             {cart.map((product, index) => (
-              <li
-              key={index}
-              className="flex items-center justify-between p-3 pb-6 overflow-hidden"
-              >
-                <div className="flex items-center w-full gap-2">
-                  <span className="flex items-center justify-center p-1 bg-gray-300 rounded w-50 h-50">
-                    <img src={product.imageUrl} alt="" />
-                  </span>
+              <div key={index} className="flex flex-row ">
+                <div className="w-1/3">
+                  <Image
+                    width={450}
+                    height={450}
+                    className="object-fit w-full h-full max-h-[400px] rounded-lg shadow-md"
+                    src={product.imageUrl}
+                    alt={product.name}
+                  />
                 </div>
-                <div
-                className="flex m-2"
-                >
-                <div className="flex items-center justify-center w-1/2 gap-2">
-                  <span>{product.name}</span>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="flex items-center justify-center w-12 h-12 bg-gray-300 rounded"
-                  >
-                    +
-                  </button>
-                  <span>{product.quantity}</span>
-                  <button
-                    onClick={() => removeFromCart(product.id)}
-                    className="flex items-center justify-center w-12 h-12 bg-gray-300 rounded"
-                  >
-                    -
-                  </button>
-                </div>
-                <div className="flex items-center justify-end w-1/2 gap-2">
-                  <span>${handlePrice(product.price)}</span>
-                  <button
+                <div className="relative flex flex-col justify-between p-4 ml-4 bg-gray-100 rounded-lg shadow-md dark:text-black md:w-2/3">
+                <h2 className="text-base md:text-xl">{product.name}</h2> 
+                <p>Type: 
+                  {
+                product.categoryName === 'shirts' ?
+                  product.categoryName.slice(0, -1)
+                :  product.categoryName
+                }
+                </p>
+                  <div className="flex items-center justify-start mb-2">
+                    <h3
+                    className="text-lg"
+                    >Quantity:</h3>
+                    
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="p-2 ml-4 bg-gray-300 "
+                    >
+                      +
+                    </button>
+                    <span className="mx-4">{product.quantity}</span>
+                    <button
+                      onClick={() => removeFromCart(product.id)}
+                      className="p-2 bg-gray-300 rounded-full"
+                    >
+                      -
+                    </button>
+                    <button
                     onClick={() => removeMultipleProductsFromCart(product.id)}
-                    className="flex items-center justify-center w-12 h-12 text-red-500 bg-gray-300 rounded"
+                    className="flex items-center justify-center p-4 ml-8 text-red-500 bg-gray-300"
                   >
-                    &times;
+                   Remove item
                   </button>
+                  </div>
+                  <h2 className="absolute text-lg font-semibold top-5 right-5">
+                    ${handlePrice(product.price)}
+                  </h2>
                 </div>
-                </div>
-              </li>
+              </div>
             ))}
             {cart.length === 0 && (
-              <span className={`flex w-full justify-center ${cartError ? "text-red-500" : ""}`}>
-                There are no items in your cart.&nbsp;
+              <div
+                className={`flex justify-center my-8 ${
+                  cartError ? "text-red-500" : ""
+                }`}
+              >
+                <span>There are no items in your cart.&nbsp;</span>
                 <button
                   onClick={() => router.push("/")}
                   className="underline transition-colors text-violet-700 hover:text-violet-900"
                 >
                   Go shopping.
                 </button>
-              </span>
+              </div>
             )}
-          </ul>
-          <div className="flex justify-end w-full">
+          </div>
+          <div className="flex justify-end w-full mt-8 text-xl font-extrabold md:text-2xl">
             Total:&nbsp;<span className="font-bold">${formattedTotal}</span>
           </div>
           <div className="flex justify-end w-full gap-4 pt-4">
@@ -236,7 +293,11 @@ function Cart({ products }: Props) {
             >
               Continue Buying
             </button>
-            <button form="information" type="submit" className="px-4 py-2 text-white rounded bg-violet-700">
+            <button
+              form="information"
+              type="submit"
+              className="px-4 py-2 text-white rounded bg-violet-700"
+            >
               Checkout
             </button>
           </div>

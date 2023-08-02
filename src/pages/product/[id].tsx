@@ -7,6 +7,8 @@ import Header from "@components/Header";
 import { ProductProps } from "@components/Product";
 import axiosinstance from "src/axios/instance";
 import Checkbox from "@components/Checkbox";
+import Image from "next/image";
+import SizeSelector from "@components/SizeSelector/SizeSelector";
 
 interface Props {
   product: ProductProps;
@@ -21,29 +23,37 @@ function Product({ product, products }: Props) {
   };
 
   return (
-    <div className="flex flex-col w-screen min-h-screen items-center gap-8 pb-16 font-medium text-sm text-text">
+    <div className="flex flex-col items-center min-h-screen gap-8 pb-16 text-sm font-medium text-text">
       <Header products={products} />
       <header className="flex w-2/3">
-        <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">{product.name}</h1>
+        <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">{product.name}</h1>
       </header>
       <main className="flex w-2/3 gap-8 ">
         <section className="max-w-[450px] h-full">
-            <img
-            className="object-fill"
+            <Image
+            className="object-fill border"
+            width={800}
+            height={1024}
             src={product.imageUrl} alt={product.name} title={product.name} />
         </section>
-        <aside className="flex flex-col w-1/3 justify-between">
+        <aside className="flex flex-col justify-between text-gray-700 dark:text-white">
           <div
-          className="flex flex-col justify-between pt-4 h-full"
+          className="flex flex-col justify-between h-full pt-4"
           >
-          <span className="text-sm text-gray-700 dark:text-white font-normal">{product.description}</span>
+          <section>
+          <p className="text-sm font-normal">{product.description}</p>
+          <br />
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod reiciendis non dolores harum vitae unde odio repellendus. Corrupti eos dolorem, et asperiores officia provident laboriosam nihil aliquam commodi tempora error!</p>
+          <br />
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum deleniti quaerat praesentium sed voluptatum natus enim doloribus at a beatae magni officiis eum earum, dolores minus explicabo, eveniet quibusdam in.</p>
-          <div className="flex my-4 md:mt-0 flex-row flex-wrap w-full items-center gap-4">
+          </section>
+          
+          <SizeSelector />
+          <div className="flex flex-row flex-wrap items-center w-full gap-4 mt-8 md:mt-10">
             <span className="text-2xl font-black text-gray-700 dark:text-white">${handlePrice(product.price)}</span>
             <button
               onClick={() => addToCart(product)}
-              className="p-4 rounded-xl bg-violet-700 text-gray-100 transition-colors hover:bg-violet-900 hover:text-white"
+              className="px-4 py-2 text-gray-100 transition-colors rounded-xl bg-violet-700 hover:bg-violet-900 hover:text-white"
             >
               Add to Cart
             </button>
@@ -52,10 +62,14 @@ function Product({ product, products }: Props) {
         </aside>
       </main>
       <footer 
-      className="w-2/3"
+      className="w-2/3 text-gray-700 dark:text-white"
       >
-        <h2>Fullstack demo website</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam eveniet repudiandae vero nobis aliquam et nemo eligendi suscipit! Error porro minus repellendus architecto quo reiciendis itaque cum commodi exercitationem inventore.</p>
+        <h2
+        className="my-8 text-xl"
+        >Fullstack demo website made with <a 
+        className="underline"
+        href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">NextJS</a></h2>
+        <p>Thank you for visiting! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure reiciendis, nisi assumenda sint cum maxime iusto voluptate tenetur sed quas rerum distinctio fugiat consequuntur voluptatibus nulla alias ratione. Ad, delectus?</p>
       </footer>
     </div>
   );

@@ -22,10 +22,10 @@ function Home({ products, categories }: Props) {
   return (
     <div className="flex flex-col min-h-screen text-sm font-medium bg-white text-text dark:bg-slate-900">
         <Header setShowSidebar={setShowSidebar} products={products} />
-      <main className="flex w-full grow">
+      <div className="flex w-full grow">
         <Sidebar showSidebar={showSidebar} categories={categories} />
         <Products showSidebar={showSidebar} products={products} />
-      </main>
+      </div>
       <Footer />
     </div>
   );

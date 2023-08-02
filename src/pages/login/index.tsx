@@ -10,7 +10,6 @@ function Login() {
 
   useEffect(() => {
     if (isAuthenticated){
-      toast('You are logged in')
       router.push("/");
     } 
   }, [isAuthenticated, router]);
@@ -23,10 +22,12 @@ function Login() {
 
   const validateInputs = (email?: string, password?: string) => {
     if (!email || !email.includes("@")) {
+      toast.error('Invalid email')
       return "ERROR: Invalid email";
     }
 
     if (!password || password.length < 8) {
+      toast.error('Password must be at least 8 characters')
       return "ERROR: Password must be at least 8 characters";
     }
 
@@ -48,15 +49,14 @@ function Login() {
       ? setPasswordError(true)
       : setPasswordError(false);
 
-    if (typeof response === "string") return;
-
-    await logIn(response!);
+    if (typeof response === "string") return
+    await logIn(response);
   };
 
   return (
     <main className="flex flex-col items-center justify-center w-screen h-screen gap-8 py-16">
-      <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
-      <header className="flex w-1/6 gap-4 text-gray-700">
+      <span className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</span>
+      <header className="flex w-1/6 gap-4 text-gray-700 dark:text-gray-300">
         <button
           onClick={() => router.push("/")}
           className="text-2xl font-semibold text-left"
@@ -66,7 +66,7 @@ function Login() {
         <h1 className="text-2xl font-semibold text-left">Login</h1>
       </header>
       <form
-        className="flex flex-col w-1/6 gap-4 text-sm font-medium"
+        className="flex flex-col w-1/6 gap-4 text-sm font-medium dark:text-gray-100"
         noValidate
         onSubmit={handleLogIn}
       >
@@ -112,7 +112,7 @@ function Login() {
           <button
             type="button"
             onClick={() => router.push("/signup")}
-            className="text-gray-700 transition-colors hover:text-violet-700"
+            className="text-gray-700 transition-colors dark:text-white hover:text-violet-700"
           >
             Signup
           </button>

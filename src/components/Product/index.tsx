@@ -3,6 +3,7 @@ import { CartContext } from "@contexts/CartProvider";
 import { WishlistContext } from "@contexts/WishlistProvider";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 export interface ProductProps {
   id: string;
@@ -31,7 +32,7 @@ function Product({ showSidebar, product }: Props) {
 
   return (
     <li
-      className={`hover:shadow-lg hover:scale-[1.008] relative flex flex-col overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors w-full max-w-[400px] hover:bg-gray-200`}
+      className={`hover:shadow-lg hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors w-full max-w-[380px] hover:bg-gray-200`}
       onClick={() => router.push(`/product/${product.id}`)}
     >
       <button
@@ -53,21 +54,21 @@ function Product({ showSidebar, product }: Props) {
         </svg>
       </button>
       <div className="flex items-center justify-center ">
-          <img
+          <Image
           className="object-cover h-[350px] w-full"
           width={280} height={250} src={product.imageUrl} alt={product.name} title={product.name} />
       </div>
       <div className="flex flex-col w-full h-1/3 justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white">
         <span className="text-sm font-semibold md:text-base">{product.name}</span>
         <div className="flex items-end justify-between gap-2 mb-4 md:flex-col lg:flex-row">
-          <span className="text-xl font-semibold md:text-sm lg:text-base">${handlePrice(product.price)}</span>
+          <span className="text-xl font-semibold md:text-sm lg:text-2xl">${handlePrice(product.price)}</span>
           <button
             onClick={(e) => {
               e.stopPropagation();
               toast('Added to cart')
               addToCart(product);
             }}
-            className="p-4 overflow-hidden text-white transition-colors group rounded-xl lg:rounded-2xl bg-violet-700 hover:bg-violet-800"
+            className="px-10 py-4 overflow-hidden text-white transition-colors group rounded-xl lg:rounded-xl bg-violet-700 hover:bg-violet-800"
           >
             <svg
               className="w-5 h-5 transition-colors fill-gray-300 group-hover:fill-white group-hover:animate-cart"

@@ -237,7 +237,7 @@ async function seed() {
           description: "Chic and stylish high heels for women. Elevate your formal and evening attire with these glamorous shoes.",
           price: 49.99,
           categoryName: "shoes",
-          imageUrl: "https://example.com/chic_heels.jpg",
+          imageUrl: "https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
           tags: ["women", "shoes"],
         },
         {
@@ -246,7 +246,7 @@ async function seed() {
           description: "Comfortable and airy sandals for men and women. Perfect for warm weather and casual outings.",
           price: 34.99,
           categoryName: "shoes",
-          imageUrl: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNob2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&q=60",
+          imageUrl: "https://images.unsplash.com/photo-1603487742131-4160ec999306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FuZGFsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60",
           tags: ["men", "women", "shoes"],
         },
         {

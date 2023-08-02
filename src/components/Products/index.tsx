@@ -67,10 +67,10 @@ function Products({ showSidebar, category, products }: Props) {
   const page = Number(router.query.page) || 1;
 
   return (
-    <main className="flex flex-col w-full h-full">
-      <nav className="flex gap-4 px-8 pt-8 text-gray-500 group">
+    <main className="flex flex-col w-full h-full px-4">
+      <nav className="flex gap-4 pt-8 text-gray-500 dark:text-gray-300 group">
         <Link
-        className={`${category ? "text-gray-500" : "text-gray-700 dark:text-gray-200"} transition-colors hover:text-violet-700`}
+        className={`${category ? "text-gray-500 dark:text-gray-100" : "text-gray-700 dark:text-gray-200"} transition-colors hover:text-violet-700 dark:hover:text-violet-200`}
         href="/">
             Main Page
         </Link>
@@ -78,25 +78,34 @@ function Products({ showSidebar, category, products }: Props) {
           <>
             -&gt;
             <Link 
-            className="text-gray-700 transition-colors hover:text-violet-700"
+            className="text-gray-700 transition-colors dark:text-gray-100 hover:text-violet-700 dark:hover:text-violet-200"
             href={`/${category.slug}`}>
             {category.name}
             </Link>
           </>
         )}
       </nav>
-      <h1 className="px-8 pt-8 text-2xl font-black text-gray-700 dark:text-white">{category ? category.name : "Main Page"}</h1>
-      <div className="flex items-center justify-between w-full gap-4 p-8">
+      <h1 className="pt-8 text-2xl font-black text-gray-700 dark:text-white">{category ? category.name : "All Categories"}</h1>
+      <div className="flex items-center justify-between gap-4 py-8 mr-8">
         <div className="flex items-center gap-4">
+        <span
+        className="px-4 py-2 text-xs transition-all bg-gray-100 rounded-xl"
+        >Products on page {products.length}</span>
           {formattedTags ? (
             <>
+            <span
+            className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl"
+            >Tags:
               {formattedTags?.map((tag, index) => (
                 <span key={index} className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl">
                   {fromSlugToName(tag)}
                 </span>
               ))}
+              </span>
               {tags && (
                 <button
+                title="clear tags"
+                className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl"
                   onClick={() =>
                     router
                       .push({
@@ -112,6 +121,7 @@ function Products({ showSidebar, category, products }: Props) {
           ) : (
             <span className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl">No Search Tags</span>
           )}
+        
         </div>
         <div className="flex items-center gap-4">
           <button
@@ -119,7 +129,8 @@ function Products({ showSidebar, category, products }: Props) {
             className={`flex items-center gap-1 px-4 py-2 rounded-xl bg-gray-100 text-xs transition-all ${
               filterByPrice === "low" || filterByPrice === "high" ? "ring-1 ring-violet-700 text-violet-700" : ""
             }`}
-          >
+            >
+            
             <span>{filterByPrice === "low" ? "↓" : "↑"}</span>
             <span>Price</span>
           </button>
@@ -129,7 +140,7 @@ function Products({ showSidebar, category, products }: Props) {
         </div>
       </div>
       <ul
-        className={`flex gap-4 flex-wrap justify-center`}
+        className={`flex gap-4 flex-wrap justify-start`}
       >
         {filteredProducts?.length > 0 ? (
           filteredProducts.map((product) => <Product key={product.id} showSidebar={showSidebar} product={product} />)

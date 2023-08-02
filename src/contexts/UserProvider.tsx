@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { AxiosResponse } from "axios";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 import axiosinstance from "src/axios/instance";
+import { toast } from 'react-toastify';
 
 interface PurchaseProps {
   id: string;
@@ -73,6 +74,7 @@ function UserProvider({ children }: Props) {
       setCookie(undefined, "eCommerceToken", response.data.token, {
         maxAge: 120,
       });
+      toast('loggin successful')
       router.push("/");
     }
     return response
@@ -81,7 +83,7 @@ function UserProvider({ children }: Props) {
   const logOut = () => {
     setUser(null);
     destroyCookie(undefined, "eCommerceToken");
-
+    toast('logout successful')
     router.push("/login");
   };
 

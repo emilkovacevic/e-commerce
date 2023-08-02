@@ -7,7 +7,7 @@
         <ToastContainer
         closeOnClick
         pauseOnHover
-
+        autoClose={2000}
         />
     );
   }

@@ -16,7 +16,7 @@ function Header({ setShowSidebar, products }: Props) {
   const { user, isAuthenticated } = useContext(UserContext);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-8 text-sm font-medium bg-gray-400 shadow-md h-fit md:p-0 text-text dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-8 text-sm font-medium bg-gray-300 shadow-md h-fit md:p-0 text-text dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}
@@ -79,11 +79,12 @@ function Header({ setShowSidebar, products }: Props) {
         </button>
         {isAuthenticated ? (
           <button onClick={() => router.push("/profile")} className="flex">
-            <span className="w-8 h-8 bg-gray-100 rounded-full">
+            <span className="w-12 h-12 bg-gray-100 rounded-full">
               <img
                 src={user!.imageUrl}
                 alt={user!.name}
-                width={32}
+                width={128}
+                height={128}
                 className="rounded-full"
               />
             </span>

@@ -20,6 +20,7 @@ interface Props {
 
 function Sidebar({ showSidebar, categories }: Props) {
   const router = useRouter();
+  const [scrollYPos, setScrollYPos] = useState(0)
 
   const currentCategory = router.query.category;
 
@@ -46,12 +47,24 @@ function Sidebar({ showSidebar, categories }: Props) {
   }, [tags]);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setScrollYPos(window.scrollY);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
+  useEffect(() => {
     if (showSidebar) {
-        document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-        document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
-}, [showSidebar]);
+  }, [showSidebar]);
 
 
   const sortedCategories = categories.sort((a, b) => {
@@ -61,13 +74,16 @@ function Sidebar({ showSidebar, categories }: Props) {
     return 0;
   });
 
+
   return (
     <aside
-      className={`${
-        showSidebar ? "absolute left-0 z-50 dark:bg-black bg-white" : "hidden md:block"
-      } flex flex-row md:flex-col w-full md:w-1/3`}
+    style={showSidebar ? {marginTop: `${scrollYPos}px`} : undefined}
+      className={`
+      ${
+        showSidebar ? `translate-x-0` : "absolute -translate-x-full"
+      } dark:bg-gray-800 bg-gray-100 md:relative min-h-screen  md:translate-x-0 flex flex-row md:flex-col w-full md:w-1/3 lg:w-1/5 transition-all duration-300`}
     >
-      <nav className="flex flex-col gap-4 mx-8 py-8 sm:mx-16 sm:py-16 border-b-[1px] border-gray-300 overflow-hidden">
+      <nav className="flex flex-col gap-4 mx-8 py-8 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
         <span className="text-base font-semibold dark:text-white">CATEGORY</span>
         <Link
         className="px-6 py-2 ml-4 border border-black w-fit dark:text-white hover:bg-slate-500/50 dark:border-white"
