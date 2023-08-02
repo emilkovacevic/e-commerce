@@ -27,16 +27,16 @@ function Categories() {
   }, []);
 
   return (
-    <main className="flex flex-col w-full min-h-screen items-center gap-16 p-16 bg-slate-200 dark:bg-slate-900">
+    <main className="flex flex-col items-center w-full min-h-screen gap-16 p-16 bg-white dark:bg-slate-900">
       <header className="flex flex-col w-1/3 gap-8">
-        <span className="text-gray-500 text-sm text-center font-bold">E-Commerce</span>
+        <span className="text-sm font-bold text-center text-gray-500">E-Commerce</span>
         <div className="flex gap-2 text-2xl font-semibold text-gray-700">
           <button onClick={() => router.push("/admin")}>&lt;-</button>
           <span>Categories</span>
         </div>
       </header>
-      <main className="flex flex-col w-1/2 items-center gap-16 text-sm font-medium">
-        <div className="flex w-full items-center gap-4 px-6 py-4 rounded-2xl bg-gray-100 ">
+      <main className="flex flex-col items-center w-1/2 gap-16 text-sm font-medium">
+        <div className="flex items-center w-full gap-4 px-6 py-4 bg-gray-100 rounded-2xl ">
           <span>
             <svg
               className="fill-gray-500"
@@ -51,7 +51,7 @@ function Categories() {
           <input
             type="text"
             placeholder="Search among our Categories..."
-            className="outline-none border-none bg-transparent placeholder:text-gray-300 font-normal"
+            className="font-normal bg-transparent border-none outline-none placeholder:text-gray-300"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>

@@ -17,7 +17,7 @@ function Checkbox({ label, tags, setTags }: Props) {
     setChecked(!checked);
 
     if (tags.includes(labelToSlug(label))) {
-      setTags(tags.filter((tag) => tag !== labelToSlug(label)));
+      setTags(tags?.filter((tag) => tag !== labelToSlug(label)));
       return;
     }
 

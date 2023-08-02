@@ -5,7 +5,7 @@ const fromSlugToName = (slug: string) => {
   return slug
     .split("-")
     .map((s) => {
-      return s.charAt(0).toUpperCase() + s.slice(1);
+      return s.charAt(0).toLowerCase() + s.slice(1);
     })
     .join(" ");
 };
@@ -17,6 +17,9 @@ const products = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     if (tags) {
+      console.log(tags)
+      const tagList = Array.isArray(tags) ? tags.map(tag => fromSlugToName(tag)) : [fromSlugToName(tags.replace(/"/g, ''))];
+    
       const response = await prisma.product.findMany({
         take: Number(take) || undefined,
         skip: Number(skip) || undefined,
@@ -25,7 +28,7 @@ const products = async (req: NextApiRequest, res: NextApiResponse) => {
             contains: category ? fromSlugToName(category as string) : undefined,
           },
           tags: {
-            hasEvery: tags ? JSON.parse(tags as string) : undefined,
+            hasEvery: tagList,
           },
         },
       });

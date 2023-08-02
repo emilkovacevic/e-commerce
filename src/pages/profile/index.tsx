@@ -25,7 +25,7 @@ function Profile({ products }: Props) {
   }, [router, user]);
 
   return (
-    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium text-text  bg-slate-200 dark:bg-slate-800">
+    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium text-text bg-white dark:bg-slate-800">
       <Header products={products} />
       <main className="flex justify-center w-full h-full">
         <section className="flex flex-col w-1/3 gap-8 py-8 pr-8 h-fit">

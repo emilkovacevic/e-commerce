@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { UserContext } from "@contexts/UserProvider";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function Login() {
   const router = useRouter();
@@ -8,7 +9,10 @@ function Login() {
   const { isAuthenticated, logIn } = useContext(UserContext);
 
   useEffect(() => {
-    if (isAuthenticated) router.push("/");
+    if (isAuthenticated){
+      toast('You are logged in')
+      router.push("/");
+    } 
   }, [isAuthenticated, router]);
 
   const [emailError, setEmailError] = useState(false);
@@ -50,16 +54,16 @@ function Login() {
   };
 
   return (
-    <main className="flex flex-col w-screen h-screen items-center justify-center gap-8 py-16">
+    <main className="flex flex-col items-center justify-center w-screen h-screen gap-8 py-16">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/6 gap-4 text-gray-700">
         <button
           onClick={() => router.push("/")}
-          className="font-semibold text-2xl text-left"
+          className="text-2xl font-semibold text-left"
         >
           &lt;-
         </button>
-        <h1 className="font-semibold text-2xl text-left">Login</h1>
+        <h1 className="text-2xl font-semibold text-left">Login</h1>
       </header>
       <form
         className="flex flex-col w-1/6 gap-4 text-sm font-medium"
@@ -104,7 +108,7 @@ function Login() {
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
-        <div className="flex w-full justify-end gap-4 pt-4">
+        <div className="flex justify-end w-full gap-4 pt-4">
           <button
             type="button"
             onClick={() => router.push("/signup")}
@@ -114,7 +118,7 @@ function Login() {
           </button>
           <button
             type="submit"
-            className="px-4 py-2 rounded bg-violet-700 text-gray-100 transition-colors hover:bg-violet-900 hover:text-white"
+            className="px-4 py-2 text-gray-100 transition-colors rounded bg-violet-700 hover:bg-violet-900 hover:text-white"
           >
             Login
           </button>

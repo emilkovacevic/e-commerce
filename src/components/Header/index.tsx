@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
-
 import Searchbar from "@components/Searchbar";
-
 import { UserContext } from "@contexts/UserProvider";
-
 import { useRouter } from "next/router";
-
 import { ProductProps } from "@components/Product";
 import ColorThemeSwitcher from "./ColorThemeSwitcher";
 
@@ -20,14 +16,14 @@ function Header({ setShowSidebar, products }: Props) {
   const { user, isAuthenticated } = useContext(UserContext);
 
   return (
-    <header className="flex w-full shadow-md h-fit items-center justify-between px-8 py-4 md:p-0  font-medium text-sm text-text bg-gray-400 dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-8 text-sm font-medium bg-gray-400 shadow-md h-fit md:p-0 text-text dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}
           className="md:hidden"
         >
           <svg
-          className="w-5 h-5 fill-gray-700 dark:fill-gray-200 transition-colors group-hover:fill-gray-900"
+          className="transition-colors fill-gray-700 dark:fill-gray-200 group-hover:fill-gray-900"
           viewBox="0 0 100 80" width="40" height="40">
             <rect width="100" height="20"></rect>
             <rect y="30" width="100" height="20"></rect>
@@ -35,24 +31,24 @@ function Header({ setShowSidebar, products }: Props) {
           </svg>
         </button>
       )}
-      <div
+      <button
         onClick={() => router.push("/")}
-        className="hidden md:flex w-1/4 h-full items-center justify-center p-8 text-center cursor-pointer transition-colors font-semibold text-base text-gray-700 hover:text-black dark:text-white"
+        className="hidden mx-4 text-2xl hover:text-black dark:text-white md:inline-block"
       >
         Emil&apos;s-Commerce
-      </div>
+      </button>
       <Searchbar products={products} />
-      <nav className="flex gap-4 px-0 md:px-8 items-center">
+      <nav className="flex items-center gap-4 px-0 my-4 md:px-8">
         <button
           onClick={() => router.push("/wishlist")}
-          className="group flex gap-2 p-4 rounded-2xl bg-violet-100"
+          className="flex gap-2 p-4 group rounded-2xl bg-violet-100"
         >
           <span className="hidden lg:block text-violet-700 transition-color group-hover:text-violet-900">
             Wishlist
           </span>
           <span className="flex w-4 h-4">
             <svg
-              className="w-5 h-5 fill-violet-700 transition-colors group-hover:fill-violet-900"
+              className="w-5 h-5 transition-colors fill-violet-700 group-hover:fill-violet-900"
               width="25"
               height="23"
               viewBox="0 0 25 23"
@@ -64,14 +60,14 @@ function Header({ setShowSidebar, products }: Props) {
         </button>
         <button
           onClick={() => router.push("/cart")}
-          className="group flex gap-2 p-4 rounded-2xl bg-violet-100"
+          className="flex gap-2 p-4 group rounded-2xl bg-violet-100"
         >
-          <span className="hidden lg:block text-violet-700 transition-colors group-hover:text-violet-900">
+          <span className="hidden transition-colors lg:block text-violet-700 group-hover:text-violet-900">
             Your cart
           </span>
           <span className="flex w-4 h-4">
             <svg
-              className="w-5 h-5 fill-violet-700 transition-colors group-hover:fill-violet-900"
+              className="w-5 h-5 transition-colors fill-violet-700 group-hover:fill-violet-900"
               width="27"
               height="24"
               viewBox="0 0 27 24"
@@ -83,7 +79,7 @@ function Header({ setShowSidebar, products }: Props) {
         </button>
         {isAuthenticated ? (
           <button onClick={() => router.push("/profile")} className="flex">
-            <span className="w-8 h-8 rounded-full bg-gray-100">
+            <span className="w-8 h-8 bg-gray-100 rounded-full">
               <img
                 src={user!.imageUrl}
                 alt={user!.name}
@@ -95,14 +91,14 @@ function Header({ setShowSidebar, products }: Props) {
         ) : (
           <button
             onClick={() => router.push("/login")}
-            className="flex gap-2 p-4 rounded-xl bg-gray-100"
+            className="flex gap-2 p-4 bg-gray-100 rounded-xl"
           >
-            <span className="hidden lg:block text-gray-700 transition-colors group-hover:text-gray-900">
+            <span className="hidden text-gray-700 transition-colors lg:block group-hover:text-gray-900">
               Login
             </span>
             <span className="flex w-4 h-4">
               <svg
-                className="w-5 h-5 fill-gray-700 transition-colors group-hover:fill-gray-900"
+                className="w-5 h-5 transition-colors fill-gray-700 group-hover:fill-gray-900"
                 width="22"
                 height="24"
                 viewBox="0 0 22 24"

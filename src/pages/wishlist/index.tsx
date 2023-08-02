@@ -21,47 +21,48 @@ function Wishlist({ products }: Props) {
   };
 
   return (
-    <main className="flex flex-col w-screen min-h-screen text-black dark:text-white items-center font-medium text-sm text-text bg-slate-200 dark:bg-slate-900">
+    <div className="flex flex-col items-center w-screen min-h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-900">
       <Header products={products} />
       <main className="flex flex-col w-2/3 h-full gap-8 py-8">
         <header className="flex">
-          <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Wishlist</h1>
+          <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">Wishlist</h1>
         </header>
-        <ul className="grid h-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-start gap-8 overflow-scroll">
+        <ul className="flex flex-wrap">
           {wishlist.length > 0 ? (
             wishlist.map((product) => (
               <li
                 key={product.id}
                 onClick={() => router.push(`/product/${product.id}`)}
-                className={`relative flex flex-col w-full h-fit justify-between overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors hover:bg-gray-200`}
+                className={`relative max-w-[400px] flex flex-col justify-between overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors hover:bg-gray-200`}
               >
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     removeFromWishlist(product.id);
                   }}
-                  className="group absolute right-4 top-4 p-2"
+                  className="absolute p-2 group right-4 top-4"
                 >
-                  <span className="text-xl">&times;</span>
+                  <span className="px-4 py-3 text-xl text-black transition-all duration-150 rounded-md hover:bg-slate-400 hover:text-white">&times;</span>
                 </button>
-                <div className="flex h-full items-center justify-center">
-                  <span className="flex items-center justify-center scale-50">
-                    <img src={product.imageUrl} alt={product.name} title={product.name} />
+                <div className="flex items-center justify-center h-full">
+                  <span className="flex items-center justify-center">
+                    <img
+                    src={product.imageUrl} alt={product.name} title={product.name} />
                   </span>
                 </div>
-                <div className="flex flex-col w-full justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white">
-                  <span className="text-base font-semibold">{product.name}</span>
-                  <div className="flex md:flex-col lg:flex-row items-end justify-between gap-2">
-                    <span className="text-base font-semibold">${handlePrice(product.price)}</span>
+                <div className="flex flex-col w-full justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white text-black">
+                  <span className="text-2xl font-semibold text-center">{product.name}</span>
+                  <div className="flex items-end justify-between gap-2 md:flex-col lg:flex-row">
+                    <span className="text-3xl font-semibold">${handlePrice(product.price)}</span>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         addToCart(product);
                       }}
-                      className="group p-4 rounded-2xl bg-violet-700 text-white transition-colors hover:bg-violet-800"
+                      className="p-4 text-white transition-colors group rounded-2xl bg-violet-700 hover:bg-violet-800"
                     >
                       <svg
-                        className="w-5 h-5 fill-gray-300 transition-colors group-hover:fill-white"
+                        className="w-5 h-5 transition-colors fill-gray-300 group-hover:fill-white"
                         width="27"
                         height="24"
                         viewBox="0 0 27 24"
@@ -79,7 +80,7 @@ function Wishlist({ products }: Props) {
               There are no items in your wishlist.&nbsp;
               <button
                 onClick={() => router.push("/")}
-                className="underline text-violet-700 transition-colors hover:text-violet-900"
+                className="underline transition-colors text-violet-700 hover:text-violet-900"
               >
                 Go shopping.
               </button>
@@ -87,7 +88,7 @@ function Wishlist({ products }: Props) {
           )}
         </ul>
       </main>
-    </main>
+    </div>
   );
 }
 

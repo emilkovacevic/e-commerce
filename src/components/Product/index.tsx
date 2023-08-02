@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "@contexts/CartProvider";
 import { WishlistContext } from "@contexts/WishlistProvider";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export interface ProductProps {
   id: string;
@@ -30,24 +31,25 @@ function Product({ showSidebar, product }: Props) {
 
   return (
     <li
+      className={`hover:shadow-lg hover:scale-[1.008] relative flex flex-col overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors w-full max-w-[400px] hover:bg-gray-200`}
       onClick={() => router.push(`/product/${product.id}`)}
-      className={`relative flex flex-col w-full h-full justify-between overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors min-h-[250px] min-w-[200px] hover:bg-gray-200`}
     >
       <button
         onClick={(e) => {
           e.stopPropagation();
+          toast('Added to wishlist')
           addToWishlist(product);
         }}
-        className="group absolute right-4 top-4 p-2"
+        className="absolute p-2 group right-4 top-4"
       >
         <svg
-          className="w-5 h-5 fill-gray-700 transition-colors group-hover:fill-violet-700"
+          className="w-5 h-5 transition-colors fill-red-500 group-hover:fill-violet-200 hover:bg-black"
           width="25"
           height="23"
           viewBox="0 0 25 23"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M23.9682 5.12217C23.5942 4.2562 23.055 3.47147 22.3806 2.81191C21.7058 2.15037 20.9101 1.62466 20.0369 1.26336C19.1314 0.88722 18.1602 0.694693 17.1797 0.69695C15.8042 0.69695 14.4621 1.07362 13.2958 1.78512C13.0168 1.95532 12.7517 2.14226 12.5006 2.34595C12.2495 2.14226 11.9844 1.95532 11.7054 1.78512C10.5391 1.07362 9.19702 0.69695 7.82146 0.69695C6.83095 0.69695 5.87113 0.886682 4.96432 1.26336C4.0882 1.62608 3.29858 2.14784 2.62057 2.81191C1.94534 3.47073 1.40594 4.25565 1.03296 5.12217C0.645124 6.0234 0.447021 6.98043 0.447021 7.96537C0.447021 8.89449 0.636754 9.86269 1.01343 10.8476C1.32872 11.6707 1.78073 12.5245 2.35829 13.3867C3.27347 14.7511 4.53184 16.1741 6.09434 17.6166C8.68363 20.0078 11.2478 21.6596 11.3566 21.7265L12.0179 22.1506C12.3109 22.3376 12.6875 22.3376 12.9805 22.1506L13.6418 21.7265C13.7506 21.6568 16.312 20.0078 18.9041 17.6166C20.4666 16.1741 21.7249 14.7511 22.6401 13.3867C23.2177 12.5245 23.6725 11.6707 23.985 10.8476C24.3616 9.86269 24.5514 8.89449 24.5514 7.96537C24.5542 6.98043 24.3561 6.0234 23.9682 5.12217V5.12217ZM12.5006 19.9436C12.5006 19.9436 2.56756 13.5792 2.56756 7.96537C2.56756 5.12217 4.91968 2.81749 7.82146 2.81749C9.86108 2.81749 11.6301 3.95588 12.5006 5.61882C13.3711 3.95588 15.1401 2.81749 17.1797 2.81749C20.0815 2.81749 22.4336 5.12217 22.4336 7.96537C22.4336 13.5792 12.5006 19.9436 12.5006 19.9436Z" />
+          <path  d="M23.9682 5.12217C23.5942 4.2562 23.055 3.47147 22.3806 2.81191C21.7058 2.15037 20.9101 1.62466 20.0369 1.26336C19.1314 0.88722 18.1602 0.694693 17.1797 0.69695C15.8042 0.69695 14.4621 1.07362 13.2958 1.78512C13.0168 1.95532 12.7517 2.14226 12.5006 2.34595C12.2495 2.14226 11.9844 1.95532 11.7054 1.78512C10.5391 1.07362 9.19702 0.69695 7.82146 0.69695C6.83095 0.69695 5.87113 0.886682 4.96432 1.26336C4.0882 1.62608 3.29858 2.14784 2.62057 2.81191C1.94534 3.47073 1.40594 4.25565 1.03296 5.12217C0.645124 6.0234 0.447021 6.98043 0.447021 7.96537C0.447021 8.89449 0.636754 9.86269 1.01343 10.8476C1.32872 11.6707 1.78073 12.5245 2.35829 13.3867C3.27347 14.7511 4.53184 16.1741 6.09434 17.6166C8.68363 20.0078 11.2478 21.6596 11.3566 21.7265L12.0179 22.1506C12.3109 22.3376 12.6875 22.3376 12.9805 22.1506L13.6418 21.7265C13.7506 21.6568 16.312 20.0078 18.9041 17.6166C20.4666 16.1741 21.7249 14.7511 22.6401 13.3867C23.2177 12.5245 23.6725 11.6707 23.985 10.8476C24.3616 9.86269 24.5514 8.89449 24.5514 7.96537C24.5542 6.98043 24.3561 6.0234 23.9682 5.12217V5.12217ZM12.5006 19.9436C12.5006 19.9436 2.56756 13.5792 2.56756 7.96537C2.56756 5.12217 4.91968 2.81749 7.82146 2.81749C9.86108 2.81749 11.6301 3.95588 12.5006 5.61882C13.3711 3.95588 15.1401 2.81749 17.1797 2.81749C20.0815 2.81749 22.4336 5.12217 22.4336 7.96537C22.4336 13.5792 12.5006 19.9436 12.5006 19.9436Z" />
         </svg>
       </button>
       <div className="flex items-center justify-center ">
@@ -56,18 +58,19 @@ function Product({ showSidebar, product }: Props) {
           width={280} height={250} src={product.imageUrl} alt={product.name} title={product.name} />
       </div>
       <div className="flex flex-col w-full h-1/3 justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white">
-        <span className="text-sm md:text-base font-semibold">{product.name}</span>
-        <div className="flex md:flex-col lg:flex-row items-end justify-between gap-2">
-          <span className="text-xl md:text-sm lg:text-base font-semibold">${handlePrice(product.price)}</span>
+        <span className="text-sm font-semibold md:text-base">{product.name}</span>
+        <div className="flex items-end justify-between gap-2 mb-4 md:flex-col lg:flex-row">
+          <span className="text-xl font-semibold md:text-sm lg:text-base">${handlePrice(product.price)}</span>
           <button
             onClick={(e) => {
               e.stopPropagation();
+              toast('Added to cart')
               addToCart(product);
             }}
-            className="group overflow-hidden p-4 rounded-xl lg:rounded-2xl bg-violet-700 text-white transition-colors hover:bg-violet-800"
+            className="p-4 overflow-hidden text-white transition-colors group rounded-xl lg:rounded-2xl bg-violet-700 hover:bg-violet-800"
           >
             <svg
-              className="w-5 h-5 fill-gray-300 transition-colors group-hover:fill-white group-hover:animate-cart"
+              className="w-5 h-5 transition-colors fill-gray-300 group-hover:fill-white group-hover:animate-cart"
               width="27"
               height="24"
               viewBox="0 0 27 24"

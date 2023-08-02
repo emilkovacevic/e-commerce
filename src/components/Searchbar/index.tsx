@@ -38,10 +38,10 @@ function Searchbar({ products }: Props) {
 
   return (
     <div className="relative hidden sm:block">
-      <div className="group flex items-center gap-4 px-6 py-4 rounded-2xl bg-gray-100 dark:bg-slate-600 ">
+      <div className="flex items-center gap-4 px-6 py-4 bg-gray-100 group rounded-2xl dark:bg-slate-600 ">
         <span>
           <svg
-            className="fill-gray-500 dark:fill-gray-100 transition-colors group-focus-within:fill-violet-500"
+            className="transition-colors fill-gray-500 dark:fill-gray-100 group-focus-within:fill-violet-500"
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -53,20 +53,19 @@ function Searchbar({ products }: Props) {
         <input
           ref={searchInputRef}
           type="text"
-          placeholder="Search (ctrl + k)."
-          className="w-fit outline-none border-none bg-transparent placeholder:text-gray-500 font-normal dark:placeholder:text-gray-200 text-gray-500 dark:text-white"
+          placeholder="Search (ctrl + k)"
+          className="font-normal text-gray-500 bg-transparent border-none outline-none w-fit placeholder:text-gray-500 dark:placeholder:text-gray-200 dark:text-white"
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="absolute flex flex-col w-full max-h-48 h-fit mt-2 shadow-md rounded-xl overflow-hidden align-top bg-gray-100 transition-colors">
+      <div className="absolute flex flex-col w-full mt-2 overflow-hidden align-top transition-colors bg-gray-100 shadow-md max-h-48 h-fit rounded-xl">
         {isSearching && filteredProducts.length > 0 && (
-          <ul className="flex flex-col w-full p-2 gap-2">
+          <ul className="flex flex-col w-full gap-2 p-2">
             {filteredProducts.map((product) => (
               <li
                 onClick={() => router.push(`/product/${product.id}`)}
                 key={product.id}
-                className="flex w-full itemscenter gap-2 p-4 rounded-xl
-                    cursor-pointer transition-colors hover:bg-gray-300"
+                className="flex w-full gap-2 p-4 transition-colors cursor-pointer itemscenter rounded-xl hover:bg-gray-300"
               >
                 <img src={product.imageUrl} alt={product.name} width={20} height={20} />
                 <h4>{product.name}</h4>

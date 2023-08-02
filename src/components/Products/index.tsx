@@ -110,13 +110,10 @@ function Products({ showSidebar, category, products }: Props) {
               )}
             </>
           ) : (
-            <span className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl">No Tags</span>
+            <span className="px-4 py-2 text-xs text-gray-500 bg-gray-100 rounded-xl">No Search Tags</span>
           )}
         </div>
         <div className="flex items-center gap-4">
-          <svg className="fill-gray-500" width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.5217 0H0.477666C0.110132 0 -0.119389 0.372905 0.0651283 0.670391L3.55445 6.19274V9.55307C3.55445 9.80028 3.76747 10 4.03149 10H7.96785C8.23188 10 8.4449 9.80028 8.4449 9.55307V6.19274L11.9357 0.670391C12.1187 0.372905 11.8892 0 11.5217 0ZM7.3708 8.99441H4.62855V6.81564H7.3723V8.99441H7.3708ZM7.51481 5.68994L7.3723 5.92179H4.62705L4.48453 5.68994L1.50976 1.00559H10.4896L7.51481 5.68994Z" />
-          </svg>
           <button
             onClick={filterByPrice === "low" ? () => setFilterByPrice("high") : () => setFilterByPrice("low")}
             className={`flex items-center gap-1 px-4 py-2 rounded-xl bg-gray-100 text-xs transition-all ${
@@ -126,18 +123,18 @@ function Products({ showSidebar, category, products }: Props) {
             <span>{filterByPrice === "low" ? "↓" : "↑"}</span>
             <span>Price</span>
           </button>
-          <button onClick={() => setFilterByPrice("")}>&times;</button>
+          <button 
+          className="gap-1 px-4 py-2 text-xs transition-all bg-gray-100 ring-1 rounded-xl"
+          onClick={() => setFilterByPrice("")}>&times;</button>
         </div>
       </div>
       <ul
-        className={`relative grid h-full md:grid-cols-3 lg:grid-cols-4 ${
-          showSidebar ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"
-        } p-8 gap-8 overflow-scroll`}
+        className={`flex gap-4 flex-wrap justify-center`}
       >
         {filteredProducts?.length > 0 ? (
           filteredProducts.map((product) => <Product key={product.id} showSidebar={showSidebar} product={product} />)
         ) : (
-          <span className="absolute w-full text-center dark:text-white text-gray-700">There are no items matching your filters.</span>
+          <span className="w-full text-lg text-center text-gray-700 dark:text-white">There are no items matching your filters.</span>
         )}
       </ul>
       <div className="flex items-center justify-center w-full gap-4 px-8 py-16">

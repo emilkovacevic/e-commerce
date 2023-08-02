@@ -92,16 +92,16 @@ function Cart({ products }: Props) {
   const formattedTotal = handlePrice(total);
 
   return (
-    <div className="flex flex-col w-screen h-screen items-center font-medium text-sm text-black dark:text-white  bg-slate-200 dark:bg-slate-800">
+    <div className="flex flex-col items-center w-screen h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-800">
       <Header products={products} />
-      <main className="flex w-full h-full justify-center">
-        <section className="flex flex-col w-1/3 h-fit gap-8 py-8 pr-8">
+      <main className="flex justify-center w-full h-full mt-16">
+        <section className="flex flex-col w-1/3 gap-8 py-8 pr-8 h-fit">
           <header className="flex w-2/3">
-            <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Information</h1>
+            <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">Information</h1>
           </header>
           <form
             id="information"
-            className="flex flex-col w-full gap-4 text-sm font-medium"
+            className="flex flex-col w-full gap-4 text-sm font-medium "
             noValidate
             onSubmit={handleCheckout}
           >
@@ -169,43 +169,47 @@ function Cart({ products }: Props) {
         </section>
         <aside className="flex flex-col w-1/3 h-full gap-8 py-8 pl-8">
           <header className="flex w-2/3">
-            <h1 className="w-full text-left font-black text-2xl text-gray-700 dark:text-white">Your Cart</h1>
+            <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">Your Cart</h1>
           </header>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-4 border shadow-md">
             {cart.map((product, index) => (
               <li
-                key={index}
-                className="flex items-center justify-between p-3 pb-6 overflow-hidden"
+              key={index}
+              className="flex items-center justify-between p-3 pb-6 overflow-hidden"
               >
-                <div className="flex w-full items-center gap-2">
-                  <span className="flex w-12 h-12 items-center justify-center p-1 rounded bg-gray-300">
+                <div className="flex items-center w-full gap-2">
+                  <span className="flex items-center justify-center p-1 bg-gray-300 rounded w-50 h-50">
                     <img src={product.imageUrl} alt="" />
                   </span>
-                  <span>{product.name}</span>
                 </div>
-                <div className="flex w-1/2 items-center justify-center gap-2">
+                <div
+                className="flex m-2"
+                >
+                <div className="flex items-center justify-center w-1/2 gap-2">
+                  <span>{product.name}</span>
                   <button
                     onClick={() => addToCart(product)}
-                    className="flex w-6 h-6 items-center justify-center rounded bg-gray-300"
+                    className="flex items-center justify-center w-12 h-12 bg-gray-300 rounded"
                   >
                     +
                   </button>
                   <span>{product.quantity}</span>
                   <button
                     onClick={() => removeFromCart(product.id)}
-                    className="flex w-6 h-6 items-center justify-center rounded bg-gray-300"
+                    className="flex items-center justify-center w-12 h-12 bg-gray-300 rounded"
                   >
                     -
                   </button>
                 </div>
-                <div className="flex w-1/2 items-center justify-end gap-2">
+                <div className="flex items-center justify-end w-1/2 gap-2">
                   <span>${handlePrice(product.price)}</span>
                   <button
                     onClick={() => removeMultipleProductsFromCart(product.id)}
-                    className="flex w-6 h-6 items-center justify-center rounded bg-gray-300"
+                    className="flex items-center justify-center w-12 h-12 text-red-500 bg-gray-300 rounded"
                   >
                     &times;
                   </button>
+                </div>
                 </div>
               </li>
             ))}
@@ -214,17 +218,17 @@ function Cart({ products }: Props) {
                 There are no items in your cart.&nbsp;
                 <button
                   onClick={() => router.push("/")}
-                  className="underline text-violet-700 transition-colors hover:text-violet-900"
+                  className="underline transition-colors text-violet-700 hover:text-violet-900"
                 >
                   Go shopping.
                 </button>
               </span>
             )}
           </ul>
-          <div className="flex w-full justify-end">
+          <div className="flex justify-end w-full">
             Total:&nbsp;<span className="font-bold">${formattedTotal}</span>
           </div>
-          <div className="flex w-full justify-end gap-4 pt-4">
+          <div className="flex justify-end w-full gap-4 pt-4">
             <button
               onClick={() => router.push("/")}
               type="button"
@@ -232,7 +236,7 @@ function Cart({ products }: Props) {
             >
               Continue Buying
             </button>
-            <button form="information" type="submit" className="px-4 py-2 rounded bg-violet-700 text-white">
+            <button form="information" type="submit" className="px-4 py-2 text-white rounded bg-violet-700">
               Checkout
             </button>
           </div>

@@ -31,20 +31,20 @@ function DeleteProduct({ products }: Props) {
   };
 
   return (
-    <main className="flex flex-col w-screen min-h-screen items-center gap-8 p-16 bg-slate-200 dark:bg-slate-900">
+    <main className="flex flex-col items-center w-screen min-h-screen gap-8 p-16 bg-white dark:bg-slate-900">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/3 gap-4 text-gray-700">
-        <button onClick={() => router.push("/admin")} className="font-semibold text-2xl text-left">
+        <button onClick={() => router.push("/admin")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>
-        <h1 className="font-semibold text-2xl text-left">Delete Product</h1>
+        <h1 className="text-2xl font-semibold text-left">Delete Product</h1>
       </header>
       <form className="flex flex-col w-1/3 gap-4 text-sm font-medium" noValidate onSubmit={handleSubmit}>
         <div className="flex w-full gap-4">
           <select
             ref={productNameRef}
             id="product"
-            className="w-full px-4 py-2 outline-none ring-1 ring-gray-300 rounded text-black transition-all focus:ring-violet-700 font-normal"
+            className="w-full px-4 py-2 font-normal text-black transition-all rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
             defaultValue="Pick a product..."
           >
             <option hidden defaultValue="Pick a product...">
@@ -57,11 +57,11 @@ function DeleteProduct({ products }: Props) {
             ))}
           </select>
         </div>
-        <div className="flex w-full justify-end gap-4 pt-4">
+        <div className="flex justify-end w-full gap-4 pt-4">
           <button type="button" onClick={() => router.push("/admin")} className="px-4 py-2 rounded bg-violet-100">
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 rounded bg-violet-700 text-white">
+          <button type="submit" className="px-4 py-2 text-white rounded bg-violet-700">
             Delete
           </button>
         </div>

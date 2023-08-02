@@ -4,7 +4,7 @@ function Admin() {
   const router = useRouter();
 
   return (
-    <main className="flex flex-col w-full h-screen items-center justify-center gap-16  bg-slate-200 dark:bg-slate-800">
+    <main className="flex flex-col w-full h-screen items-center justify-center gap-16 bg-white dark:bg-slate-800">
       <header className="flex flex-col w-1/3 gap-4">
         <span className="text-gray-500 text-sm text-center font-bold">E-Commerce</span>
         <div className="flex gap-2 text-2xl font-semibold text-gray-700">

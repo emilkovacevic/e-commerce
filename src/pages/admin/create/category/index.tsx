@@ -35,13 +35,13 @@ function CreateCategory() {
   };
 
   return (
-    <main className="flex flex-col w-screen min-h-screen items-center gap-8 p-16 bg-slate-200 dark:bg-slate-900">
+    <main className="flex flex-col items-center w-screen min-h-screen gap-8 p-16 bg-white dark:bg-slate-900">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/3 gap-4 text-gray-700">
-        <button onClick={() => router.push("/admin")} className="font-semibold text-2xl text-left">
+        <button onClick={() => router.push("/admin")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>
-        <h1 className="font-semibold text-2xl text-left">New Category</h1>
+        <h1 className="text-2xl font-semibold text-left">New Category</h1>
       </header>
       <form className="flex flex-col w-1/3 gap-4 text-sm font-medium" noValidate onSubmit={handleSubmit}>
         <div className="flex flex-col w-full">
@@ -52,17 +52,17 @@ function CreateCategory() {
             autoComplete="off"
             type="text"
             id="category"
-            className="w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
         </div>
         <span className="text-gray-500">Slug: {fromNameToSlug(category)}</span>
-        <div className="flex w-full justify-end gap-4 pt-4">
+        <div className="flex justify-end w-full gap-4 pt-4">
           <button type="button" onClick={() => router.push("/admin")} className="px-4 py-2 rounded bg-violet-100">
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 rounded bg-violet-700 text-white">
+          <button type="submit" className="px-4 py-2 text-white rounded bg-violet-700">
             Add
           </button>
         </div>

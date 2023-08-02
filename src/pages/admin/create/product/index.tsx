@@ -49,13 +49,13 @@ function CreateProduct({ categories }: Props) {
   };
 
   return (
-    <main className="flex flex-col w-screen min-h-screen items-center gap-8 p-16 bg-slate-200 dark:bg-slate-900">
+    <main className="flex flex-col items-center w-screen min-h-screen gap-8 p-16 bg-white dark:bg-slate-900">
       <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
       <header className="flex w-1/3 gap-4 text-gray-700">
-        <button onClick={() => router.push("/admin")} className="font-semibold text-2xl text-left">
+        <button onClick={() => router.push("/admin")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>
-        <h1 className="font-semibold text-2xl text-left">New Product</h1>
+        <h1 className="text-2xl font-semibold text-left">New Product</h1>
       </header>
       <form className="flex flex-col w-1/3 gap-4 text-sm font-medium" noValidate onSubmit={handleSubmit}>
         <div className="flex flex-col w-full">
@@ -67,7 +67,7 @@ function CreateProduct({ categories }: Props) {
             autoComplete="off"
             type="text"
             id="name"
-            className="w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
           />
         </div>
         <div className="flex flex-col w-full">
@@ -80,7 +80,7 @@ function CreateProduct({ categories }: Props) {
             maxLength={500}
             autoComplete="off"
             id="description"
-            className="resize-none w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none resize-none ring-1 ring-gray-300 focus:ring-violet-700"
           />
         </div>
         <div className="flex flex-col w-full">
@@ -92,7 +92,7 @@ function CreateProduct({ categories }: Props) {
             autoComplete="off"
             type="number"
             id="price"
-            className="w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
           />
         </div>
         <div className="flex flex-col w-full">
@@ -103,7 +103,7 @@ function CreateProduct({ categories }: Props) {
             <select
               ref={categoryRef}
               id="category"
-              className="w-full px-4 py-2 outline-none ring-1 ring-gray-300 rounded text-black transition-all focus:ring-violet-700 font-normal"
+              className="w-full px-4 py-2 font-normal text-black transition-all rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
               defaultValue="Pick a category..."
             >
               <option hidden defaultValue="Pick a category...">
@@ -133,11 +133,11 @@ function CreateProduct({ categories }: Props) {
             autoComplete="off"
             type="text"
             id="image"
-            className="w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
           />
         </div>
         <div className="flex flex-col w-full">
-          <label htmlFor="tags" className="flex w-full items-end justify-between gap-2 pb-2">
+          <label htmlFor="tags" className="flex items-end justify-between w-full gap-2 pb-2">
             Tags
             <span className="pt-2 text-xs text-gray-500">Separate words with a single blank space.</span>
           </label>
@@ -146,14 +146,14 @@ function CreateProduct({ categories }: Props) {
             autoComplete="off"
             type="text"
             id="tags"
-            className="w-full px-4 py-2 ring-1 ring-gray-300 outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700"
+            className="w-full px-4 py-2 font-normal transition-all bg-transparent rounded outline-none ring-1 ring-gray-300 focus:ring-violet-700"
           />
         </div>
-        <div className="flex w-full justify-end gap-4 pt-4">
+        <div className="flex justify-end w-full gap-4 pt-4">
           <button type="button" onClick={() => router.push("/admin")} className="px-4 py-2 rounded bg-violet-100">
             Cancel
           </button>
-          <button type="submit" className="px-4 py-2 rounded bg-violet-700 text-white">
+          <button type="submit" className="px-4 py-2 text-white rounded bg-violet-700">
             Add
           </button>
         </div>
