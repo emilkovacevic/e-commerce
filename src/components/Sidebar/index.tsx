@@ -50,7 +50,11 @@ function Sidebar({ showSidebar, categories }: Props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollYPos(window.scrollY);
+      setTimeout(() => {
+        setScrollYPos(window.scrollY);
+        window.addEventListener("scroll", handleScroll);
+      }, 2000);
+      window.removeEventListener("scroll", handleScroll);
     };
   
     window.addEventListener("scroll", handleScroll);
@@ -79,17 +83,17 @@ function Sidebar({ showSidebar, categories }: Props) {
 
   return (
     <aside
-    style={showSidebar ? {marginTop: `${scrollYPos}px`} : undefined}
+      style={showSidebar ? {marginTop: `${scrollYPos-1}px`} : undefined}
       className={`
       ${
-        showSidebar ? `translate-x-0` : "absolute -translate-x-full"
-      } dark:bg-gray-800 bg-gray-100 overflow-y-scroll md:relative min-h-screen min-w-[300px] md:translate-x-0 flex flex-col w-full md:w-1/3 lg:w-1/5 transition-all duration-300`}
+        showSidebar ? `absolute translate-x-0 top-20` : "relative -translate-x-full"
+      } dark:bg-gray-800 z-30 bg-gray-100 overflow-y-scroll md:relative min-h-full w-4/5 md:translate-x-0 flex flex-col  md:w-1/2 transition-all duration-300`}
     >
       <nav
-      className="flex flex-col gap-4 mx-8 py-4 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
+      className="md:hidden flex flex-col  gap-4 mx-8 pt-4 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
       <span className="text-base font-semibold dark:text-white">USER</span>
         <ul
-          className="mx-2 dark:text-white"
+          className="mx-2 text-lg dark:text-white"
         >
           {isAuthenticated ? 
           <>
@@ -114,7 +118,10 @@ function Sidebar({ showSidebar, categories }: Props) {
           ><ColorThemeSwitcher /></li>
         </ul>
       </nav>
-      <nav className="flex flex-col gap-4 mx-8 py-8 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
+      <section
+      className="flex flex-wrap justify-start"
+      >
+      <nav className="flex flex-re flex-col gap-4 mx-8 py-4 sm:mx-16 sm:py-16 md:border-b-[1px] border-gray-300 overflow-hidden">
         <span className="text-base font-semibold dark:text-white">CATEGORY</span>
         <Link
         className="px-6 py-2 ml-4 border border-black w-fit dark:text-white hover:bg-slate-500/50 dark:border-white"
@@ -131,7 +138,7 @@ function Sidebar({ showSidebar, categories }: Props) {
           </Link>
         ))}
       </nav>
-      <menu className="flex flex-col gap-4 py-8 mx-8 sm:mx-12 sm:py-12 md:mx-16 md:py-16">
+      <menu className="flex flex-col gap-4 py-4 mx-8 sm:mx-12 sm:py-12 md:mx-16 md:py-16">
         <span className="text-base font-semibold dark:text-white">Tags</span>
           <section
           className="flex flex-col gap-4 justify-evenly"
@@ -145,6 +152,7 @@ function Sidebar({ showSidebar, categories }: Props) {
         <Checkbox label="New" tags={tags} setTags={setTags} />
           </section>
       </menu>
+      </section>
     </aside>
   );
 }

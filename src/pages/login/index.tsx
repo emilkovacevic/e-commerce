@@ -63,10 +63,10 @@ function Login() {
         >
           &lt;-
         </button>
-        <h1 className="text-2xl font-semibold text-left">Login</h1>
+        <h1 className="font-semibold text-left md:text-2xl">Login</h1>
       </header>
       <form
-        className="flex flex-col w-1/6 gap-4 text-sm font-medium dark:text-gray-100"
+        className="flex flex-col gap-4 text-sm font-medium md:w-1/6 dark:text-gray-100"
         noValidate
         onSubmit={handleLogIn}
       >

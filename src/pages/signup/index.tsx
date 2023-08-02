@@ -94,16 +94,16 @@ function Signup() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center w-screen h-screen gap-8 py-16">
+    <main className="flex flex-col items-center justify-center w-screen min-h-screen gap-8 py-16">
       <span className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</span>
-      <header className="flex w-1/6 gap-4 text-gray-700 dark:text-gray-300">
+      <header className="flex gap-4 text-gray-700 md:w-1/6 dark:text-gray-300">
         <button onClick={() => router.push("/")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>
         <h1 className="text-2xl font-semibold text-left">Signup</h1>
       </header>
       <form className="flex flex-col items-center w-full gap-4 text-sm font-medium dark:text-white" noValidate onSubmit={handleSignUp}>
-        <div className="flex flex-col w-1/6">
+        <div className="flex flex-col md:w-1/6">
           <label htmlFor="name" className={`pb-2 ${nameError ? "text-red-500" : ""}`}>
             Name
           </label>
@@ -119,7 +119,7 @@ function Signup() {
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
-        <div className="flex flex-col w-1/6">
+        <div className="flex flex-col md:w-1/6">
           <label htmlFor="email" className={`pb-2 ${emailError ? "text-red-500" : ""}`}>
             Email
           </label>
@@ -135,7 +135,7 @@ function Signup() {
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
-        <div className="flex flex-col w-1/6">
+        <div className="flex flex-col md:w-1/6">
           <label htmlFor="password" className={`pb-2 ${passwordError ? "text-red-500" : ""}`}>
             Password
           </label>
@@ -151,7 +151,7 @@ function Signup() {
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
-        <div className="flex flex-col w-1/6">
+        <div className="flex flex-col md:w-1/6">
           <label htmlFor="image" className={`pb-2 ${imageError ? "text-red-500" : ""}`}>
             Image URL
           </label>
@@ -167,7 +167,7 @@ function Signup() {
             } outline-none rounded bg-transparent font-normal transition-all focus:ring-violet-700`}
           />
         </div>
-        <div className="flex flex-col w-1/3 py-8">
+        <div className="px-2 py-8 mx-auto border md:w-1/3">
           <label
             className="flex items-center justify-center w-full gap-2 transition-all"
             onChange={() => setTermsAcceptance(!termsAcceptance)}
@@ -185,7 +185,7 @@ function Signup() {
             </span>
           </label>
         </div>
-        <div className="flex justify-end w-1/6 gap-4 pt-4">
+        <div className="flex justify-end gap-4 pt-4 md:w-1/6">
           <button
             type="button"
             onClick={() => router.push("/login")}

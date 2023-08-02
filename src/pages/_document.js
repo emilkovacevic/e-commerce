@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head >
-      <title>E-Commerce</title>
       <meta name="description" content="A NextJS + Typecript E-Commerce Project." />
       <link
         rel="shortcut icon"
