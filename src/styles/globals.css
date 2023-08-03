@@ -3,34 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 html {
   font-family: "Inter var", sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
 }
 
 body {
   font-family: "Inter var", sans-serif;
 }
 
-/* * {
-  background-color: rgba(187, 107, 3, 0.308) !important;
-}
-* * {
-  background-color: rgba(22, 2, 243, 0.055) !important;
-} */
 
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
 }
+
+.transition-transform {
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+

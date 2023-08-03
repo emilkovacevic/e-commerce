@@ -23,7 +23,7 @@ function Product({ product, products }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen gap-8 pb-16 text-sm font-medium text-text">
+    <div className="flex flex-col items-center min-h-screen gap-8 pb-16 text-sm font-medium ">
       <Header products={products} />
       <header className="flex w-2/3">
         <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">{product.name}</h1>
@@ -53,7 +53,7 @@ function Product({ product, products }: Props) {
             <span className="text-2xl font-black text-gray-700 dark:text-white">${handlePrice(product.price)}</span>
             <button
               onClick={() => addToCart(product)}
-              className="px-4 py-2 text-gray-100 transition-colors rounded-xl bg-violet-700 hover:bg-violet-900 hover:text-white"
+              className="px-4 py-2 text-gray-100 transition-colors rounded-md bg-violet-700 hover:bg-violet-900 hover:text-white"
             >
               Add to Cart
             </button>

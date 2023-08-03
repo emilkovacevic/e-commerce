@@ -11,7 +11,7 @@ export default function Document() {
       />
       </Head>
       <body
-      className="relative bg-white dark:bg-slate-900"
+      className="bg-white dark:bg-slate-900"
       >
         <Main />
         <NextScript />

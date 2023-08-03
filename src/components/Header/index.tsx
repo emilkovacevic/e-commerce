@@ -16,7 +16,7 @@ function Header({ setShowSidebar, products }: Props) {
   const { user, isAuthenticated } = useContext(UserContext);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-screen px-4 py-4 text-sm font-medium bg-gray-300 shadow-md md:px-8 h-fit md:p-0 text-text dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-4 text-sm font-medium bg-gray-300 shadow-md md:px-8 h-fit md:p-0 dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}
@@ -41,7 +41,7 @@ function Header({ setShowSidebar, products }: Props) {
       <nav className="items-center hidden gap-4 px-0 my-4 md:flex md:px-8">
         <button
           onClick={() => router.push("/wishlist")}
-          className="flex gap-2 p-4 group rounded-2xl bg-violet-100"
+          className="flex gap-2 p-4 rounded-md group bg-violet-100"
         >
           <span className="hidden lg:block text-violet-700 transition-color group-hover:text-violet-900">
             Wishlist
@@ -60,10 +60,10 @@ function Header({ setShowSidebar, products }: Props) {
         </button>
         <button
           onClick={() => router.push("/cart")}
-          className="flex gap-2 p-4 group rounded-2xl bg-violet-100"
+          className="flex gap-2 p-4 rounded-md group bg-violet-100"
         >
           <span className="hidden transition-colors lg:block text-violet-700 group-hover:text-violet-900">
-            Your cart
+            Cart
           </span>
           <span className="flex w-4 h-4">
             <svg
@@ -92,7 +92,7 @@ function Header({ setShowSidebar, products }: Props) {
         ) : (
           <button
             onClick={() => router.push("/login")}
-            className="flex gap-2 p-4 bg-gray-100 rounded-xl"
+            className="flex gap-2 p-4 bg-gray-100 rounded-md"
           >
             <span className="hidden text-gray-700 transition-colors lg:block group-hover:text-gray-900">
               Login

@@ -25,9 +25,9 @@ function Profile({ products }: Props) {
   }, [router, user]);
 
   return (
-    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium bg-white text-text dark:bg-slate-800">
+    <main className="flex flex-col items-center w-screen h-screen text-sm font-medium bg-white dark:bg-slate-800">
       <Header products={products} />
-      <main className="flex justify-center w-full h-full">
+      <main className="flex justify-center w-full min-h-full">
         <section className="flex flex-col w-1/3 gap-8 py-8 pr-8 h-fit">
           <header className="flex justify-between w-full">
             <div className="flex flex-col justify-between w-fit">
@@ -39,7 +39,7 @@ function Profile({ products }: Props) {
               </div>
               <button
                 onClick={logOut}
-                className="p-4 text-gray-100 transition-colors w-fit rounded-xl bg-violet-700 hover:bg-violet-900 hover:text-white"
+                className="p-4 text-gray-100 transition-colors w-fit rounded-md bg-violet-700 hover:bg-violet-900 hover:text-white"
               >
                 Log Out
               </button>

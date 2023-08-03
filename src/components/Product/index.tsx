@@ -16,11 +16,10 @@ export interface ProductProps {
 }
 
 interface Props {
-  showSidebar: boolean;
   product: ProductProps;
 }
 
-function Product({ showSidebar, product }: Props) {
+function Product({ product }: Props) {
   const router = useRouter();
 
   const { addToCart } = useContext(CartContext);
@@ -32,7 +31,7 @@ function Product({ showSidebar, product }: Props) {
 
   return (
     <li
-      className={`hover:shadow-lg hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-2xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors w-full max-w-[380px] hover:bg-gray-200`}
+      className={`hover:shadow-lg hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-xl border-[1px] border-gray-300 bg-gray-100 cursor-pointer transition-colors w-full max-w-[380px] hover:bg-gray-200`}
       onClick={() => router.push(`/product/${product.id}`)}
     >
       <button
@@ -68,7 +67,7 @@ function Product({ showSidebar, product }: Props) {
               toast('Added to cart')
               addToCart(product);
             }}
-            className="px-10 py-4 overflow-hidden text-white transition-colors group rounded-xl lg:rounded-xl bg-violet-700 hover:bg-violet-800"
+            className="px-10 py-4 overflow-hidden text-white transition-colors rounded-md group lg:rounded-md bg-violet-700 hover:bg-violet-800"
           >
             <svg
               className="w-5 h-5 transition-colors fill-gray-300 group-hover:fill-white group-hover:animate-cart"

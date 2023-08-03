@@ -23,7 +23,7 @@ function Wishlist({ products }: Props) {
   return (
     <div className="flex flex-col items-center w-screen min-h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-900">
       <Header products={products} />
-      <main className="flex flex-col justify-start h-full gap-8 py-8">
+      <main className="flex flex-col justify-start gap-8 py-8">
         <header className="flex">
           <h1 className="w-full text-2xl font-black text-center text-gray-700 md:text-left dark:text-white">Wishlist</h1>
         </header>

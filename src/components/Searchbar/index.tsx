@@ -39,7 +39,7 @@ function Searchbar({ products }: Props) {
 
   return (
     <div className="relative mx-1 md:mx-4">
-      <div className="flex items-center gap-4 px-6 py-4 bg-gray-100 group rounded-2xl dark:bg-slate-600 ">
+      <div className="flex items-center gap-4 px-6 py-4 bg-gray-100 rounded-sm group md:rounded-xl dark:bg-slate-600 ">
         <span>
           <svg
             className="transition-colors fill-gray-500 dark:fill-gray-100 group-focus-within:fill-violet-500"
@@ -59,7 +59,7 @@ function Searchbar({ products }: Props) {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="absolute flex flex-col w-full mt-2 align-top transition-colors bg-gray-100 shadow-md h-fit rounded-xl">
+      <div className="absolute flex flex-col w-full mt-2 align-top transition-colors bg-gray-100 rounded-md shadow-md h-fit">
         {isSearching && filteredProducts.length > 0 && (
           <ul className="w-full gap-2 px-2 py-6 dark:text-black">
             {filteredProducts.map((product) => (
@@ -67,7 +67,7 @@ function Searchbar({ products }: Props) {
                 key={product.id}
               >
                 <button
-                className="flex items-center w-full gap-2 p-4 transition-colors cursor-pointer rounded-xl hover:bg-gray-300"
+                className="flex items-center w-full gap-2 p-4 transition-colors rounded-md cursor-pointer hover:bg-gray-300"
                  onClick={() => router.push(`/product/${product.id}`)}
                 >
                 <Image

@@ -180,7 +180,7 @@ function Signup() {
                 termsAcceptance ? "bg-violet-700 hover:bg-violet-700 after:opacity-100" : "bg-gray-300 after:opacity-0"
               } transition-colors hover:bg-fgVar after:absolute after:content-[''] after:w-[4px] after:h-[6px] after:border-b-2 after:border-r-2 after:border-extreme after:rotate-[40deg] after:transition-opacity after:bg-transparent`}
             />
-            <span className={`font-medium text-text text-sm ${termsError ? "text-red-500" : ""}`}>
+            <span className={`font-medium  text-sm ${termsError ? "text-red-500" : ""}`}>
               I acknowledge that this is not a real e-commerce website.
             </span>
           </label>
