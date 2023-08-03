@@ -16,7 +16,7 @@ function Header({ setShowSidebar, products }: Props) {
   const { user, isAuthenticated } = useContext(UserContext);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-4 text-sm font-medium bg-gray-300 shadow-md md:px-8 h-fit md:p-0 dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between px-2 py-4 text-sm font-medium bg-gray-300 shadow-md sm:px-4 md:px-0 h-fit dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}

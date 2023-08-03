@@ -6,8 +6,8 @@ export default function Document() {
       <Head >
       <meta name="description" content="A NextJS + Typecript E-Commerce Project." />
       <link
-        rel="shortcut icon"
-        href="https://raw.githubusercontent.com/antoniopataro/e-commerce/main/public/favicon.png"
+        rel="icon"
+        href="/favicon.ico"
       />
       </Head>
       <body

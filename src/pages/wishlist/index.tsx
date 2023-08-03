@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { ProductProps } from "@components/Product";
 import axiosinstance from "src/axios/instance";
 import Image from "next/image";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
 interface Props {
   products: ProductProps[];
@@ -21,11 +21,13 @@ function Wishlist({ products }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center w-screen min-h-screen text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-900">
+    <div className="flex-col w-full text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-900">
       <Header products={products} />
-      <main className="flex flex-col justify-start gap-8 py-8">
+      <main className="flex flex-col justify-start gap-8 py-8 mx-auto max-w-7xl">
         <header className="flex">
-          <h1 className="w-full text-2xl font-black text-center text-gray-700 md:text-left dark:text-white">Wishlist</h1>
+          <h1 className="w-full text-2xl font-black text-center text-gray-700 md:text-left dark:text-white">
+            Wishlist
+          </h1>
         </header>
         <ul className="flex flex-wrap justify-start gap-6">
           {wishlist.length > 0 ? (
@@ -33,7 +35,7 @@ function Wishlist({ products }: Props) {
               <li
                 key={product.id}
                 onClick={() => router.push(`/product/${product.id}`)}
-                className={`mx-auto relative bg-gray-100 cursor-pointer transition-colors hover:bg-gray-200`}
+                className={`hover:shadow-xl min-w-full lg:max-w-[400px] lg:min-w-[360px] shadow-md hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-xl  bg-gray-100 cursor-pointer transition-colors hover:bg-gray-200`}
               >
                 <button
                   onClick={(e) => {
@@ -44,19 +46,26 @@ function Wishlist({ products }: Props) {
                 >
                   <span className="text-xl text-black">&times;</span>
                 </button>
-                    <Image
-                    className="object-cover w-full h-full max-h-[450px]"
-                    width={450}
-                    height={450}
-                    src={product.imageUrl} alt={product.name} title={product.name} />
+                <Image
+                  className="w-auto h-auto max-h-[360px] max-w-[360px]"
+                  width={450}
+                  height={450}
+                  src={product.imageUrl}
+                  alt={product.name}
+                  title={product.name}
+                />
                 <div className="flex flex-col w-full justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white text-black">
-                  <span className="text-2xl font-semibold text-center">{product.name}</span>
+                  <span className="text-2xl font-semibold text-center">
+                    {product.name}
+                  </span>
                   <div className="flex items-end justify-between gap-2 md:flex-col lg:flex-row">
-                    <span className="text-3xl font-semibold">${handlePrice(product.price)}</span>
+                    <span className="text-3xl font-semibold">
+                      ${handlePrice(product.price)}
+                    </span>
                     <button
                       onClick={() => {
                         addToCart(product);
-                        toast('added to cart')
+                        toast("added to cart");
                       }}
                       className="p-4 text-white transition-colors group rounded-2xl bg-violet-700 hover:bg-violet-800"
                     >

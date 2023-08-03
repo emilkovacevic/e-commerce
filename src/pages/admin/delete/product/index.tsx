@@ -32,12 +32,12 @@ function DeleteProduct({ products }: Props) {
 
   return (
     <main className="flex flex-col items-center w-screen min-h-screen gap-8 p-16 bg-white dark:bg-slate-900">
-      <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
-      <header className="flex w-1/3 gap-4 text-gray-700">
+      <span className="text-sm font-semibold text-gray-500 md:text-lg">E-Commerce</span>
+      <header className="flex w-1/3 gap-4 text-gray-700 dark:text-white">
         <button onClick={() => router.push("/admin")} className="text-2xl font-semibold text-left">
           &lt;-
+        <span className="text-2xl font-semibold text-left">Delete Product</span>
         </button>
-        <h1 className="text-2xl font-semibold text-left">Delete Product</h1>
       </header>
       <form className="flex flex-col w-1/3 gap-4 text-sm font-medium" noValidate onSubmit={handleSubmit}>
         <div className="flex w-full gap-4">

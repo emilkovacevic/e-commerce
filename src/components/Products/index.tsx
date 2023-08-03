@@ -67,12 +67,12 @@ function Products({ showSidebar, category, products }: Props) {
   const page = Number(router.query.page) || 1;
  
   return (
-    <main className="w-full px-4">
+    <main className="w-full px-4 mr-4 lg:mr-0">
       <header
-      className='sticky z-40 bg-slate-900 top-20'
+      className='sticky z-40 dark:bg-slate-900 top-28'
       >
         <div
-        className={`${!isNavOnTopOfPage && 'transition-transform flex flex-wrap justify-between px-4'}
+        className={`${!isNavOnTopOfPage ? 'transition-transform flex flex-wrap justify-between px-4' : 'pr-4'}
       
         `}
         >
@@ -145,15 +145,12 @@ function Products({ showSidebar, category, products }: Props) {
             <span
             >{filterByPrice === "low" ? "↓" : "↑"} Price</span>
           </button>
-          <button 
-          className="gap-1 px-4 py-2 text-xs transition-all bg-gray-100 rounded-md ring-1"
-          onClick={() => setFilterByPrice("")}>&times;</button>
         </div>
       </div>
       </div>
       </header>
       <ul
-        className={`flex gap-4 flex-wrap justify-start`}
+        className='flex flex-wrap justify-start gap-4'
       >
         {filteredProducts?.length > 0 ? (
           filteredProducts.map((product) => <Product key={product.id} product={product} />)

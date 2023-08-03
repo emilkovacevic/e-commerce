@@ -32,8 +32,8 @@ function DeleteCategory({ categories }: Props) {
 
   return (
     <main className="flex flex-col items-center w-screen min-h-screen gap-8 p-16 bg-white dark:bg-slate-900">
-      <span className="text-sm font-semibold text-gray-500">E-Commerce</span>
-      <header className="flex w-1/3 gap-4 text-gray-700">
+      <span className="text-sm font-semibold text-gray-500 md:text-lg dark:text-white">E-Commerce</span>
+      <header className="flex w-1/3 gap-4 text-gray-700 dark:text-white ">
         <button onClick={() => router.push("/admin")} className="text-2xl font-semibold text-left">
           &lt;-
         </button>

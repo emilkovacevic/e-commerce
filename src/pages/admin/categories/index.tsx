@@ -29,8 +29,8 @@ function Categories() {
   return (
     <main className="flex flex-col items-center w-full min-h-screen gap-16 p-16 bg-white dark:bg-slate-900">
       <header className="flex flex-col w-1/3 gap-8">
-        <span className="text-sm font-bold text-center text-gray-500">E-Commerce</span>
-        <div className="flex gap-2 text-2xl font-semibold text-gray-700">
+        <span className="text-sm font-bold text-center text-gray-500 dark:text-white md:text-xl">E-Commerce</span>
+        <div className="flex gap-2 text-2xl font-semibold text-gray-700 dark:text-white">
           <button onClick={() => router.push("/admin")}>&lt;-</button>
           <span>Categories</span>
         </div>
@@ -50,7 +50,7 @@ function Categories() {
           </span>
           <input
             type="text"
-            placeholder="Search among our Categories..."
+            placeholder="Search among Categories..."
             className="font-normal bg-transparent border-none outline-none placeholder:text-gray-300"
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -61,7 +61,7 @@ function Categories() {
             .map((category) => (
               <li
                 key={category.name}
-                className="flex flex-col w-full items-center justify-between gap-4 py-4 border-gray-300 border-b-[1px] overflow-hidden"
+                className="dark:text-white flex flex-col w-full items-center justify-between gap-4 py-4 border-gray-300 border-b-[1px] overflow-hidden"
               >
                 <div className="flex w-full">
                   <span>{category.name}</span>
