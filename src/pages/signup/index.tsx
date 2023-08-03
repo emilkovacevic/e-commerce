@@ -95,12 +95,12 @@ function Signup() {
 
   return (
     <main className="flex flex-col items-center justify-center w-screen min-h-screen gap-8 py-16">
-      <span className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</span>
+      <h1 className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</h1>
       <header className="flex gap-4 text-gray-700 md:w-1/6 dark:text-gray-300">
         <button onClick={() => router.push("/")} className="text-2xl font-semibold text-left">
           &lt;-
+        <span className="text-2xl font-semibold text-left">Signup</span>
         </button>
-        <h1 className="text-2xl font-semibold text-left">Signup</h1>
       </header>
       <form className="flex flex-col items-center w-full gap-4 text-sm font-medium dark:text-white" noValidate onSubmit={handleSignUp}>
         <div className="flex flex-col md:w-1/6">

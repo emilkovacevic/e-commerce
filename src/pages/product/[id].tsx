@@ -1,14 +1,11 @@
 import { useContext } from "react";
-
 import { CartContext } from "@contexts/CartProvider";
-
 import Header from "@components/Header";
-
 import { ProductProps } from "@components/Product";
 import axiosinstance from "src/axios/instance";
-import Checkbox from "@components/Checkbox";
 import Image from "next/image";
 import SizeSelector from "@components/SizeSelector/SizeSelector";
+import { useRouter } from "next/router";
 
 interface Props {
   product: ProductProps;
@@ -17,19 +14,25 @@ interface Props {
 
 function Product({ product, products }: Props) {
   const { addToCart } = useContext(CartContext);
-
+  const router = useRouter()
   const handlePrice = (price: number) => {
     return price.toFixed(2);
   };
 
   return (
     <div className="flex flex-col items-center min-h-screen gap-8 pb-16 text-sm font-medium ">
-      <Header products={products} />
-      <header className="flex w-2/3">
-        <h1 className="w-full text-2xl font-black text-left text-gray-700 dark:text-white">{product.name}</h1>
+      <Header products={products}>
+      <button
+      onClick={()=> router.back()}
+      title="back"
+      className="px-4 border dark:text-white text-slate-900 hover:bg-slate-400"
+      >&lt;-</button>
+      </Header>
+      <header className="flex px-4 md:w-2/3">
+        <h1 className="w-full text-2xl font-black text-center text-gray-700 md:text-left dark:text-white">{product.name}</h1>
       </header>
-      <main className="flex w-2/3 gap-8 ">
-        <section className="max-w-[450px] h-full">
+      <main className="flex flex-col gap-8 mx-auto md:px-4 md:flex-row md:w-2/3 ">
+        <section className="h-full my-4">
             <Image
             className="object-fill border"
             width={800}
@@ -47,9 +50,9 @@ function Product({ product, products }: Props) {
           <br />
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum deleniti quaerat praesentium sed voluptatum natus enim doloribus at a beatae magni officiis eum earum, dolores minus explicabo, eveniet quibusdam in.</p>
           </section>
-          
+          <br />
           <SizeSelector />
-          <div className="flex flex-row flex-wrap items-center w-full gap-4 mt-8 md:mt-10">
+          <div className="flex flex-row flex-wrap items-center justify-center w-full gap-4 mt-8 md:justify-start md:mt-10">
             <span className="text-2xl font-black text-gray-700 dark:text-white">${handlePrice(product.price)}</span>
             <button
               onClick={() => addToCart(product)}
@@ -62,7 +65,7 @@ function Product({ product, products }: Props) {
         </aside>
       </main>
       <footer 
-      className="w-2/3 text-gray-700 dark:text-white"
+      className="px-4 text-justify text-gray-700 md:w-2/3 dark:text-white"
       >
         <h2
         className="my-8 text-xl"

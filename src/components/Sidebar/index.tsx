@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import Checkbox from "@components/Checkbox";
-
 import { useRouter } from "next/router";
-
 import { ProductProps } from "@components/Product";
 import Link from "next/link";
 import ColorThemeSwitcher from "@components/Header/ColorThemeSwitcher";
 import { UserContext } from "@contexts/UserProvider";
+import useScreenWidth from "src/hooks/useScreenWidth";
 
 const LABELS = [ 'Blue', 'Green', 'White', 'Men', 'Women', 'New' ]
 
@@ -24,8 +23,9 @@ interface Props {
 
 function Sidebar({ showSidebar, categories }: Props) {
   const router = useRouter();
+  const { isScreenSizeWiderThan768px } = useScreenWidth()
   const currentCategory = router.query.category;
-  const { user, isAuthenticated } = useContext(UserContext);
+  const { isAuthenticated } = useContext(UserContext);
   const [tags, setTags] = useState<string[]>(
     (router.query.tags as string[]) || []
   );
@@ -60,18 +60,19 @@ function Sidebar({ showSidebar, categories }: Props) {
   return (
     <div
     className={`${
-    showSidebar
-    ? `translate-x-0 sticky`
-    : "translate-x-[-9999px] absolute"}
-     h-screen md:sticky mt-0 md:translate-x-0 bg-gray-100 top-20 md:top-0 dark:bg-gray-800 w-fit`}
-    >
+      showSidebar
+        ? `translate-x-0 w-64 md:w-auto`
+        : "translate-x-[-9999px]"
+    }
+    duration-75 transition-transform
+    md:translate-x-0 bg-gray-100 dark:bg-gray-800 w-fit`}
+  >
     <aside
       className={`
-      ${
-        showSidebar
-          ? `translate-x-0`
-          : "translate-x-[-9999px] "
-      } md:relative md:translate-x-0 flex flex-col sm:w-1/3 md:w-1/5 lg:1/6 transition-all duration-300`}
+      ${isScreenSizeWiderThan768px ? 'sticky' : showSidebar ? 'sticky' : 'absolute'}
+     
+      z-30 my-auto top-16 md:top-64
+      md:relative md:translate-x-0 flex flex-col sm:w-1/3 md:w-1/5 lg:1/6 transition-all duration-300`}
     >
       <nav className="flex flex-col gap-4 md:hidden sm:mx-4 sm:py-5">
         <span className="mt-6 ml-4 text-base font-semibold dark:text-white">USER</span>

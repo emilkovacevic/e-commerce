@@ -1,26 +1,40 @@
-import React, { useContext } from "react";
+import React, { ReactComponentElement, ReactElement, ReactHTMLElement, useContext, useEffect } from "react";
 import Searchbar from "@components/Searchbar";
 import { UserContext } from "@contexts/UserProvider";
 import { useRouter } from "next/router";
 import { ProductProps } from "@components/Product";
 import ColorThemeSwitcher from "./ColorThemeSwitcher";
-
+import useScreenWidth  from '../../hooks/useScreenWidth'
 interface Props {
   setShowSidebar?: React.Dispatch<React.SetStateAction<boolean>>;
   products: ProductProps[];
+  children?: ReactElement
 }
 
-function Header({ setShowSidebar, products }: Props) {
+function Header({ setShowSidebar, products, children }: Props) {
   const router = useRouter();
 
   const { user, isAuthenticated } = useContext(UserContext);
+  const {isScreenSizeWiderThan768px} = useScreenWidth()
 
+  useEffect(() => {
+    if(setShowSidebar){
+      if(isScreenSizeWiderThan768px){
+        setShowSidebar(true)
+      }
+      else{
+        setShowSidebar(false)
+      }
+    }
+  }, [isScreenSizeWiderThan768px, setShowSidebar]);
+  
+  
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between px-2 py-4 text-sm font-medium bg-gray-300 shadow-md sm:px-4 md:px-0 h-fit dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-2 text-sm font-medium bg-gray-300 shadow-md sm:px-4 md:px-0 h-fit dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}
-          className="md:hidden"
+          className="mx-4 md:hidden"
         >
           <svg
           className="transition-colors fill-gray-700 dark:fill-gray-200 group-hover:fill-gray-900"
@@ -33,12 +47,17 @@ function Header({ setShowSidebar, products }: Props) {
       )}
       <button
         onClick={() => router.push("/")}
-        className="hidden mx-4 text-2xl hover:text-black dark:text-white md:inline-block"
+        className="hidden mx-4 md:text-xl hover:text-black dark:text-white md:inline-block"
       >
         Emil&apos;s-Commerce
       </button>
+      <div
+      className="flex justify-between w-full"
+      >
       <Searchbar products={products} />
-      <nav className="items-center hidden gap-4 px-0 my-4 md:flex md:px-8">
+      {children}
+      </div>
+      <nav className="items-center hidden gap-4 px-0 my-1 md:flex md:px-8">
         <button
           onClick={() => router.push("/wishlist")}
           className="flex gap-2 p-4 rounded-md group bg-violet-100"

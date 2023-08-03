@@ -20,7 +20,7 @@ function Home({ products, categories }: Props) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div className="flex-col text-sm font-medium bg-white flexw-screen dark:bg-slate-900">
+    <div className="flex flex-col min-h-screen text-sm font-medium bg-white dark:bg-slate-900">
         <Header setShowSidebar={setShowSidebar} products={products} />
       <div className="relative flex w-full grow">
         <Sidebar showSidebar={showSidebar} categories={categories} />

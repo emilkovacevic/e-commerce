@@ -31,7 +31,7 @@ function Product({ product }: Props) {
 
   return (
     <li
-      className={`hover:shadow-xl min-w-full lg:max-w-[280px] lg:min-w-[260px] shadow-md hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-xl  bg-gray-100 cursor-pointer transition-colors hover:bg-gray-200`}
+      className={`hover:shadow-xl max-w-[320px] h-full w-full shadow-md hover:scale-[1.008] relative mx-auto md:mx-0 flex flex-col overflow-hidden rounded-xl cursor-pointer transition-colors`}
       onClick={() => router.push(`/product/${product.id}`)}
     >
       <button
@@ -53,7 +53,7 @@ function Product({ product }: Props) {
         </svg>
       </button>
           <Image
-          className=" w-auto h-[260px]"
+          className=" object-fit w-auto h-[260px]"
           width={260} height={260} src={product.imageUrl} alt={product.name} title={product.name} />
       <div className="flex flex-col w-full h-1/3 justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white">
         <span className="text-sm font-semibold md:text-base">{product.name}</span>

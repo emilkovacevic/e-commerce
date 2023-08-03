@@ -110,7 +110,7 @@ function Cart({ products }: Props) {
     if (typeof response === "string") return;
 
     console.log(response);
-    alert("Purchase not available | Demo website");
+    alert("Purchase not available | Demo website" + `\nPayload: ${JSON.stringify(response)}`);
   };
 
   const total = cart.reduce((acc, curr) => acc + curr.total, 0);
@@ -221,12 +221,12 @@ function Cart({ products }: Props) {
                   <Image
                     width={450}
                     height={450}
-                    className="object-fit w-full h-full max-h-[400px] rounded-lg shadow-md"
+                    className="object-cover w-full h-full max-h-[250px] rounded-lg shadow-md"
                     src={product.imageUrl}
                     alt={product.name}
                   />
                 </div>
-                <div className="relative flex flex-col justify-between p-4 ml-4 bg-gray-100 rounded-lg shadow-md dark:text-black md:w-2/3">
+                <div className="relative flex flex-col justify-between p-4 ml-4 bg-gray-100 rounded-lg shadow-md dark:bg-slate-600 dark:text-white md:w-2/3">
                 <h2 className="text-base md:text-xl">{product.name}</h2> 
                 <p>Type: 
                   {
@@ -235,27 +235,28 @@ function Cart({ products }: Props) {
                 :  product.categoryName
                 }
                 </p>
-                  <div className="flex items-center justify-start mb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex">
                     <h3
                     className="text-lg"
                     >Quantity:</h3>
-                    
                     <button
                       onClick={() => addToCart(product)}
-                      className="p-2 ml-4 bg-gray-300 "
+                      className="p-2 ml-4 bg-gray-300 dark:bg-slate-900 "
                     >
                       +
                     </button>
-                    <span className="mx-4">{product.quantity}</span>
+                    <span className="py-2 mx-4">{product.quantity}</span>
                     <button
                       onClick={() => removeFromCart(product.id)}
-                      className="p-2 bg-gray-300 rounded-full"
+                      className="p-2 bg-gray-300 dark:bg-slate-900"
                     >
                       -
                     </button>
+                    </div>
                     <button
                     onClick={() => removeMultipleProductsFromCart(product.id)}
-                    className="flex items-center justify-center p-4 ml-8 text-red-500 bg-gray-300"
+                    className="p-4 ml-8 font-semibold text-red-700 bg-gray-300 hover:bg-red-500/50 dark:hover:bg-red-800/50 dark:bg-slate-800"
                   >
                    Remove item
                   </button>

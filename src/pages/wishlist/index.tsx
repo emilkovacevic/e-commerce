@@ -21,15 +21,16 @@ function Wishlist({ products }: Props) {
   };
 
   return (
-    <div className="flex-col w-full text-sm font-medium text-black bg-white dark:text-white dark:bg-slate-900">
-      <Header products={products} />
-      <main className="flex flex-col justify-start gap-8 py-8 mx-auto max-w-7xl">
-        <header className="flex">
-          <h1 className="w-full text-2xl font-black text-center text-gray-700 md:text-left dark:text-white">
+    
+    <div className="flex flex-col gap-8">
+    <Header products={products} />
+      <main className="m-4">
+        <header>
+          <h1 className="font-bold text-gray-700 md:text-xl md:text-left dark:text-white">
             Wishlist
           </h1>
         </header>
-        <ul className="flex flex-wrap justify-start gap-6">
+        <ul className="flex flex-wrap justify-start gap-6 py-8">
           {wishlist.length > 0 ? (
             wishlist.map((product) => (
               <li
@@ -47,7 +48,7 @@ function Wishlist({ products }: Props) {
                   <span className="text-xl text-black">&times;</span>
                 </button>
                 <Image
-                  className="w-auto h-auto max-h-[360px] max-w-[360px]"
+                  className="w-auto h-auto max-h-[360px]"
                   width={450}
                   height={450}
                   src={product.imageUrl}

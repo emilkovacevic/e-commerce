@@ -37,7 +37,7 @@ function Admin() {
           </div>
         </section>
         <section className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-gray-700 text-slate-200">Categories</span>
+          <span className="text-sm font-medium text-gray-700">Categories</span>
           <div className="flex gap-4">
             <button
               onClick={() => router.push("/admin/categories")}

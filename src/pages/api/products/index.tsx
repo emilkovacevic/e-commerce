@@ -10,6 +10,15 @@ const fromSlugToName = (slug: string) => {
     .join(" ");
 };
 
+const parseTagArray = (tagArray: string | string[]) => {
+  if (typeof tagArray === 'string') {
+    const tags = tagArray.replace(/\[|\]|'/g, '').split(',');
+    return tags.map(tag => fromSlugToName(tag.trim()));
+  }
+
+  return tagArray.map(tag => fromSlugToName(tag.trim()));
+};
+
 const products = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") return res.status(405).json({ message: "Method not allowed." });
 
@@ -17,9 +26,8 @@ const products = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     if (tags) {
-      console.log(tags)
-      const tagList = Array.isArray(tags) ? tags.map(tag => fromSlugToName(tag)) : [fromSlugToName(tags.replace(/"/g, ''))];
-    
+      const tagList = Array.isArray(tags) ? parseTagArray(tags) : parseTagArray(tags.replace(/"/g, ''));
+      console.log(tagList)
       const response = await prisma.product.findMany({
         take: Number(take) || undefined,
         skip: Number(skip) || undefined,

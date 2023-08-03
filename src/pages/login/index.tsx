@@ -55,15 +55,15 @@ function Login() {
 
   return (
     <main className="flex flex-col items-center justify-center w-screen h-screen gap-8 py-16">
-      <span className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</span>
+      <h1 className="text-sm font-semibold text-gray-500 dark:text-white">E-Commerce</h1>
       <header className="flex w-1/6 gap-4 text-gray-700 dark:text-gray-300">
         <button
           onClick={() => router.push("/")}
           className="text-2xl font-semibold text-left"
         >
           &lt;-
+        <span className="font-semibold text-left md:text-2xl">Login</span>
         </button>
-        <h1 className="font-semibold text-left md:text-2xl">Login</h1>
       </header>
       <form
         className="flex flex-col gap-4 text-sm font-medium md:w-1/6 dark:text-gray-100"
