@@ -30,7 +30,7 @@ function Header({ setShowSidebar, products, children }: Props) {
   
   
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-2 text-sm font-medium bg-gray-300 shadow-md sm:px-4 md:px-0 h-fit dark:bg-gray-700 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full p-2 text-sm font-medium bg-gray-300 shadow-md sm:px-4 md:px-0 h-fit dark:bg-gray-700 ">
       {setShowSidebar && (
         <button
           onClick={() => setShowSidebar((prev) => !prev)}

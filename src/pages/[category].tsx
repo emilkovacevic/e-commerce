@@ -32,7 +32,7 @@ function Home({ products, categories }: Props) {
   return (
     <main className="flex flex-col w-screen min-h-screen text-sm font-medium ">
       <Header setShowSidebar={setShowSidebar} products={products} />
-      <main className="flex w-full h-full">
+      <main className="flex w-full h-full grow">
         <Sidebar showSidebar={showSidebar} categories={categories} />
         <Products showSidebar={showSidebar} category={category} products={products} />
       </main>

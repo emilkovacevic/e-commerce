@@ -55,7 +55,7 @@ function Wishlist({ products }: Props) {
                   alt={product.name}
                   title={product.name}
                 />
-                <div className="flex flex-col w-full justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white text-black">
+                <div className="flex flex-col w-full justify-between gap-4 p-4 border-t-[1px] border-gray-300 bg-white text-black dark:text-white">
                   <span className="text-2xl font-semibold text-center">
                     {product.name}
                   </span>
@@ -85,7 +85,7 @@ function Wishlist({ products }: Props) {
               </li>
             ))
           ) : (
-            <span className="absolute flex justify-center">
+            <li className="absolute flex justify-center text-black dark:text-white">
               There are no items in your wishlist.&nbsp;
               <button
                 onClick={() => router.push("/")}
@@ -93,7 +93,7 @@ function Wishlist({ products }: Props) {
               >
                 Go shopping.
               </button>
-            </span>
+            </li>
           )}
         </ul>
       </main>

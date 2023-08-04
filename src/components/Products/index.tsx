@@ -67,17 +67,17 @@ function Products({ showSidebar, category, products }: Props) {
   const page = Number(router.query.page) || 1;
 
   return (
-    <main className="w-full mx-4">
-      <header className="sticky z-20 bg-white dark:bg-slate-900 top-14 md:top-16">
+    <main className="w-full mx-4 text-right">
+      <header className="sticky top-0 z-20 bg-white dark:bg-slate-900 md:top-16">
         <div
           className={`${
             !isNavOnTopOfPage
-              ? "shadow-md transition-transform flex flex-wrap justify-between px-2"
+              ? "shadow-md transition-transform flex flex-wrap justify-between px-2 "
               : "px-2"
           }
         `}
         >
-          <nav className="flex gap-4 pt-8 mb-4 text-gray-500 md:mb-0 dark:text-gray-300 group">
+          <nav className="flex gap-4 mx-2 my-4 text-gray-500 md:mx-0 md:my-0 md:pt-8 md:mb-0 dark:text-gray-300 group">
             <Link
               className={`${
                 category

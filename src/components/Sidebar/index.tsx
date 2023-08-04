@@ -58,24 +58,19 @@ function Sidebar({ showSidebar, categories }: Props) {
   });
 
   return (
-    <div
-    className={`${
-      showSidebar
-        ? `translate-x-0 w-64 md:w-auto`
-        : "translate-x-[-9999px]"
-    }
-    duration-75 transition-transform
-    md:translate-x-0 bg-gray-100 dark:bg-gray-800 w-fit`}
+<aside
+  className='bg-gray-300 dark:bg-gray-800'
+>
+  <div
+    className={`
+       ${isScreenSizeWiderThan768px ? 'h-fit sticky top-20' : showSidebar ? 'h-fit w-full sticky top-16 flex translate-x-0 ' : 'flex absolute opacity-20 -translate-x-full'}
+       transition-all
+      `}
   >
-    <aside
-      className={`
-      ${isScreenSizeWiderThan768px ? 'sticky' : showSidebar ? 'sticky' : 'absolute'}
-     
-      z-30 my-auto top-16 md:top-64
-      md:relative md:translate-x-0 flex flex-col sm:w-1/3 md:w-1/5 lg:1/6 transition-all duration-300`}
-    >
-      <nav className="flex flex-col gap-4 md:hidden sm:mx-4 sm:py-5">
-        <span className="mt-6 ml-4 text-base font-semibold dark:text-white">USER</span>
+      <nav
+        className='flex flex-col gap-4 md:hidden'
+      >
+      <span className="mt-6 ml-4 text-base font-semibold dark:text-white">USER</span>
         <ul className="mx-2 text-lg dark:text-white">
           {isAuthenticated ? (
             <>
@@ -138,8 +133,8 @@ function Sidebar({ showSidebar, categories }: Props) {
             ))}
           </ul>
         </menu>
-    </aside>
     </div>
+    </aside>
   );
 }
 
