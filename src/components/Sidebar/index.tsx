@@ -63,7 +63,7 @@ function Sidebar({ showSidebar, categories }: Props) {
 >
   <div
     className={`
-       ${isScreenSizeWiderThan768px ? 'h-fit sticky top-20' : showSidebar ? 'h-fit w-full sticky top-16 flex translate-x-0 ' : 'flex absolute opacity-20 -translate-x-full'}
+       ${isScreenSizeWiderThan768px ? 'h-fit sticky top-20' : showSidebar ? ' w-full fixed z-50 bg-slate-200 dark:bg-slate-700 border-t top-16 flex translate-x-0 ' : 'flex absolute opacity-20 -translate-x-full'}
        transition-all
       `}
   >
